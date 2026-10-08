@@ -1,0 +1,75 @@
+---
+layout: default
+page_id: angel
+title: "Angel numbers: what repeating numbers mean, digit by digit"
+description: "How angel numbers like 111, 444 and 1212 are read in modern spiritual tradition, what each digit stands for, and a free decoder for any sequence you keep seeing."
+engine: true
+---
+{%- assign lex = site.data.lexicon -%}
+<article class="article">
+  <header class="article-head wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Angel numbers</span></nav>
+    <h1>Angel numbers, decoded digit by digit</h1>
+    <p class="lede">"Angel numbers" are repeating sequences, such as 111 or 1212, that some people notice again and again and take as a sign. It is a modern spiritual tradition, not a science. Here is how its readers interpret the digits, so you can read any sequence yourself.</p>
+  </header>
+  <div class="wrap article-grid">
+    <nav class="toc" data-toc aria-label="On this page"></nav>
+    <div class="prose" data-prose>
+      <h2 id="decoder">Decode a sequence</h2>
+      <form class="panel tool" data-angel-form novalidate>
+        <div class="tool-row">
+          <div class="field"><label for="angel-n">The number you keep seeing</label><input id="angel-n" class="big-input" type="text" inputmode="numeric" maxlength="12" placeholder="1212"></div>
+          <button class="btn btn-ink" type="submit">Decode</button>
+        </div>
+        <div class="result" data-angel-out aria-live="polite"></div>
+      </form>
+
+      <h2 id="digits">What each digit stands for</h2>
+      <dl class="ledger">
+        {%- for i in (0..9) %}{% assign k = i | append: "" %}<div><dt><a href="{{ '/number/' | relative_url }}{{ k }}/">{{ k }}</a></dt><dd>{{ lex.digits[k].angel | capitalize }}</dd></div>{% endfor -%}
+      </dl>
+
+      <h2 id="patterns">How patterns change the reading</h2>
+      <ul>
+        <li><strong>Repeats</strong> such as 444 are read as one digit's message, amplified.</li>
+        <li><strong>Mirrors</strong> such as 1221 are read as balance between two sides of a situation.</li>
+        <li><strong>Runs</strong> such as 1234 are read as steady progress, one step at a time.</li>
+        <li><strong>Doubled blocks</strong> such as 439439 are read as the same message sent twice for emphasis.</li>
+        <li><strong>The digit sum</strong> is often reduced to one digit and read as the overall theme, the same way <a href="{{ '/tools/numerology/' | relative_url }}">numerology</a> does.</li>
+      </ul>
+
+      <h2 id="popular">Popular angel numbers</h2>
+      <ul class="num-grid">
+        {%- assign pop = "111,222,333,444,555,666,777,888,999,1010,1111,1212,1234,2222,3333,4444,5555,439" | split: "," -%}
+        {%- for p in pop %}<li><a href="{{ '/number/' | relative_url }}{{ p }}/"><b>{{ p }}</b><small>{% assign f = p | slice: 0 %}{{ lex.digits[f].angel | split: "," | first | capitalize }}</small></a></li>{% endfor -%}
+      </ul>
+
+      <h2 id="honest">A note on belief</h2>
+      <p>Seeing the same number often is usually explained by attention: once a pattern matters to you, you notice it more. Many people still find the practice a useful prompt to pause and reflect. We present these meanings as a cultural tradition, for interest, and the math on every number page is there if you prefer facts.</p>
+      {% include share.html %}
+    </div>
+  </div>
+  <div class="wrap">{% include lead-cta.html heading="Want a personal numerology reading?" text="Send your name, birth date and the numbers you keep seeing, and get a reading or a lucky-date plan from our numerology partners." need="numerology" button="Request a reading" %}</div>
+</article>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var f = document.querySelector('[data-angel-form]'); if (!f) return;
+  var out = f.querySelector('[data-angel-out]'), inp = f.querySelector('#angel-n');
+  var meanings = {
+    {%- for i in (0..9) %}{% assign k = i | append: "" %}"{{ k }}": {{ lex.digits[k].angel | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor -%}
+  };
+  function decode(s) {
+    if (!/^\d{1,12}$/.test(s)) { out.innerHTML = '<p class="form-status is-err">Enter between 1 and 12 digits.</p>'; return; }
+    var uniq = s.split('').filter(function (c, i, a) { return a.indexOf(c) === i; });
+    var sum = s.split('').reduce(function (a, c) { return a + Number(c); }, 0);
+    var root = window.N439 ? window.N439.reduce(sum, true) : sum;
+    var pattern = /^(\d)\1+$/.test(s) ? 'A single digit repeated: its message is read as amplified.' :
+      s.length > 1 && s === s.split('').reverse().join('') ? 'A mirror: read as balance and reflection.' :
+      s.length % 2 === 0 && s.slice(0, s.length / 2) === s.slice(s.length / 2) ? 'A block written twice: the same message, repeated for emphasis.' :
+      /^(0?1?2?3?4?5?6?7?8?9?)$/.test(s) && s.length > 2 ? 'A rising run: read as steady progress.' : 'A mix of digits: read each theme, then the overall sum.';
+    out.innerHTML = '<p class="out-big">' + s + '</p><ul>' + uniq.map(function (c) { return '<li><strong>' + c + '</strong>: ' + meanings[c] + '</li>'; }).join('') +
+      '</ul><p>' + pattern + ' The digits add up to ' + sum + (root !== sum ? ', which reduces to ' + root : '') + '.</p><p><a href="' + (window.siteUrl ? window.siteUrl('/explorer/') : '/explorer/') + '?n=' + s + '">See the math and culture for ' + s + '</a></p>';
+  }
+  f.addEventListener('submit', function (e) { e.preventDefault(); decode(inp.value.replace(/\D/g, '')); });
+});
+</script>

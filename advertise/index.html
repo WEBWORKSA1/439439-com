@@ -1,0 +1,56 @@
+---
+layout: default
+page_id: advertise
+title: "Advertise and sponsor on 439439"
+description: "Sponsor a lucky-number page, a free tool, the monthly contest or the daily newsletter on 439439.com. Simple packages, clearly labelled, no pop-ups."
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Advertise</span></nav>
+  <header class="tool-hero">
+    <h1>Put your brand on a number</h1>
+    <p class="lede">People come to 439439 to look up numbers that matter to them: a birth date, a phone number, a lucky 8 or a price. Sponsor the moment they find it.</p>
+  </header>
+
+  <h2>Sponsorship packages</h2>
+  <ul class="plans">
+    <li><b>Number page sponsor</b><span>Your logo, one line and a link on a number page of your choice: 8 for a jeweller, 168 for a restaurant, 108 for a yoga studio, 911 for a safety brand.</span><span class="price">from US$49 / month</span></li>
+    <li><b>Tool sponsor</b><span>"Brought to you by" placement on a free tool such as the lucky number checker or the cheque writer, shown with every result.</span><span class="price">from US$149 / month</span></li>
+    <li><b>Contest title sponsor</b><span>Your name on the monthly 439 Challenge, the winners' announcement and the prize. Prizes you add are credited to you.</span><span class="price">from US$299 / month + prizes</span></li>
+    <li><b>Newsletter feature</b><span>A clearly labelled feature in the daily "number of the day" email.</span><span class="price">from US$99 / issue</span></li>
+    <li><b>Video integration</b><span>A short, labelled mention in a 439439 number video, with a link in the description.</span><span class="price">from US$199 / video</span></li>
+    <li><b>Partnership or licensing</b><span>Embed our tools on your site, license number data, co-brand a microsite, or acquire the domain.</span><span class="price">quote</span></li>
+  </ul>
+  <p class="fine">Launch prices. Every sponsorship is labelled as sponsored. We do not sell reader data, run pop-up ads or accept gambling, adult, weapons or misleading health offers.</p>
+
+  <div class="two-col" style="align-items:start;margin-top:28px">
+    <form class="panel" data-form="advertise" data-subject="Advertising / sponsorship enquiry" novalidate>
+      <h2 class="mt-0">Ask for a proposal</h2>
+      <div class="form-grid">
+        <div class="field"><label for="ad-name">Your name</label><input id="ad-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="ad-email">Work email</label><input id="ad-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="ad-co">Company</label><input id="ad-co" name="company" type="text" autocomplete="organization" required></div>
+        <div class="field"><label for="ad-site">Website</label><input id="ad-site" name="website" type="url" placeholder="https://"></div>
+        <div class="field"><label for="ad-pkg">Interested in</label><select id="ad-pkg" name="package"><option>Number page sponsor</option><option>Tool sponsor</option><option>Contest title sponsor</option><option>Newsletter feature</option><option>Video integration</option><option>Partnership or licensing</option><option>Buying the domain</option></select></div>
+        <div class="field"><label for="ad-page">Number or page you want</label><input id="ad-page" name="page_requested" type="text" placeholder="888, the lucky number checker"></div>
+        <div class="field"><label for="ad-budget">Monthly budget</label><select id="ad-budget" name="budget"><option>Under US$100</option><option>US$100 to 500</option><option>US$500 to 2,000</option><option>Over US$2,000</option></select></div>
+        <div class="field"><label for="ad-start">Start date</label><input id="ad-start" name="start_date" type="date"></div>
+        <div class="field field-wide"><label for="ad-msg">Goals and details</label><textarea id="ad-msg" name="message" rows="4"></textarea></div>
+      </div>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-actions"><button class="btn btn-gold" type="submit">Send enquiry</button></div>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <div>
+      <h2 class="mt-0">Why sponsor numbers</h2>
+      <ul>
+        <li><strong>Intent you can match.</strong> Someone reading about 8 cares about prosperity; someone on 520 is thinking about love; someone on 911 is thinking about safety.</li>
+        <li><strong>Evergreen pages.</strong> Number pages do not go out of date, so a sponsorship keeps working all month.</li>
+        <li><strong>Brand-safe.</strong> Reference content about math, language and culture, with no user-generated comments.</li>
+      </ul>
+      <p>Prefer to talk first? <a href="{{ site.contact_url }}" target="_blank" rel="noopener">Contact us about sponsorship, advertising or partnership</a>, or <a href="#" data-mail="Sponsorship enquiry: 439439.com">email us</a>.</p>
+      <script>
+        (function () { var p = new URLSearchParams(location.search).get('page'); if (p) { var f = document.getElementById('ad-page'); if (f) f.value = p.replace('number-', ''); } })();
+      </script>
+    </div>
+  </div>
+</div>

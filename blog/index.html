@@ -1,0 +1,20 @@
+---
+layout: default
+page_id: blog
+title: "Articles: the stories behind numbers"
+description: "Sourced articles on number meanings across cultures, the math behind number tricks, scripture and history linked to 439, lucky phone numbers, vanity numbers and numerology."
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Articles</span></nav>
+  <header class="tool-hero">
+    <h1>The stories behind numbers</h1>
+    <p class="lede">Researched, sourced and written in plain English. New articles every month. <a href="{{ '/blog/feed.xml' | relative_url }}">Follow by RSS</a>.</p>
+  </header>
+  {%- assign all = site.articles | sort: "date" | reverse -%}
+  <ul class="article-list">
+    {%- for a in all %}
+    <li><a href="{{ a.url | relative_url }}"><span class="al-num">{{ a.hero_number }}</span><span class="al-title">{{ a.title }}</span></a><p>{{ a.description }}</p><p class="fine">{{ a.category }}. {{ a.reading_time }}-minute read.</p></li>
+    {%- endfor %}
+  </ul>
+  {% include lead-cta.html %}
+</div>

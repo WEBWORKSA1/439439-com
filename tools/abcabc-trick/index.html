@@ -1,0 +1,33 @@
+---
+layout: default
+page_id: tools
+title: "The ABCABC trick: why 7, 11 and 13 always divide it"
+description: "Write any three digits twice, divide by 7, 11 and 13, and you get your number back. Try the ABCABC trick and see why it always works: 1001 = 7 × 11 × 13."
+engine: true
+script: tools.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <a href="{{ '/tools/' | relative_url }}">Tools</a> <span aria-hidden="true">/</span> <span aria-current="page">The ABCABC trick</span></nav>
+  <h1>The ABCABC trick</h1>
+  <p class="lede">Pick any three-digit number and write it twice. Divide by 7, then 11, then 13. You always get your number back, with no remainder at any step. 439439 is this site's own example.</p>
+  <form class="panel tool" data-tool="abcabc" novalidate>
+    <div class="tool-row">
+      <div class="field"><label for="a-n">Three digits</label><input id="a-n" class="big-input" type="text" inputmode="numeric" maxlength="3" autocomplete="off" placeholder="439"></div>
+      <button class="btn btn-ink" type="submit">Do the trick</button>
+    </div>
+    <div class="result" id="a-out" aria-live="polite"></div>
+  </form>
+  <section class="prose">
+    <h2>Why it works</h2>
+    <p>Writing ABC twice is the same as ABC × 1000 + ABC, which is ABC × 1001. And 1001 = 7 × 11 × 13. So dividing ABCABC by 7, 11 and 13 simply undoes the 1001, leaving ABC. The same trick works with any three digits, including 100 (100100) and 999 (999999).</p>
+    <h2>Perform it as a party trick</h2>
+    <ol class="steps-list">
+      <li>Ask a friend to write any three-digit number twice, secretly, on a calculator.</li>
+      <li>Announce that the number is divisible by 13. Let them check.</li>
+      <li>Ask them to divide the result by 11, then by 7. Each time there is no remainder.</li>
+      <li>Reveal that the final answer is their original three digits.</li>
+    </ol>
+    <p><a href="{{ '/blog/abcabc-1001-trick/' | relative_url }}">Read the full explanation, with the history of 1001</a>.</p>
+  </section>
+  {% include ad.html slot="bottom" %}
+</div>

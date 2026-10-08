@@ -1,0 +1,29 @@
+---
+layout: default
+page_id: explorer
+title: "Number explorer: facts, meaning and luck for any number"
+description: "Type any whole number up to a quadrillion to see if it is prime, its factors, words in nine languages, Roman numerals, keypad words, numerology and culture verdicts."
+engine: true
+script: explorer.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Explorer</span></nav>
+  <header class="tool-hero">
+    <h1>Number explorer</h1>
+    <p class="lede">Type any whole number from 0 to 1,000,000,000,000,000. Every fact is calculated in your browser, instantly.</p>
+  </header>
+  <form class="panel tool" id="explorer-form" role="search" novalidate>
+    <div class="tool-row">
+      <div class="field">
+        <label for="ex-n">Number</label>
+        <input id="ex-n" name="n" class="big-input" type="text" inputmode="numeric" autocomplete="off" placeholder="439439" maxlength="22">
+      </div>
+      <button class="btn btn-ink" type="submit">Explore</button>
+      <button class="btn btn-ghost" type="button" id="ex-random">Surprise me</button>
+    </div>
+    <p class="hint">Commas and spaces are fine. Phone numbers work too: leading zeros are kept for the keypad and luck checks.</p>
+  </form>
+  <div id="explorer-out" class="result" aria-live="polite"></div>
+  <p class="fine" id="ex-recent"></p>
+  {% include lead-cta.html heading="Found a number you love?" text="We can help you get it on a phone line, a number plate, a vanity toll-free line or a domain, or time a launch around it." need="lucky" %}
+</div>

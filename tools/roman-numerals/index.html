@@ -1,0 +1,26 @@
+---
+layout: default
+page_id: tools
+title: "Roman numerals converter: numbers to Roman and back"
+description: "Convert numbers to Roman numerals and Roman numerals to numbers, from 1 to 3,999,999 using the overline (vinculum) for thousands. Validates incorrect numerals."
+engine: true
+script: tools.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <a href="{{ '/tools/' | relative_url }}">Tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Roman numerals</span></nav>
+  <h1>Roman numerals converter</h1>
+  <p class="lede">Type a number to get its Roman numeral, or type a Roman numeral to get the number. Both directions are checked for valid form.</p>
+  <form class="panel tool" data-tool="roman" novalidate>
+    <div class="tool-row">
+      <div class="field"><label for="r-in">Number or Roman numeral</label><input id="r-in" class="big-input" type="text" autocomplete="off" placeholder="439 or CDXXXIX"></div>
+      <button class="btn btn-ink" type="submit">Convert</button>
+    </div>
+    <div class="result" id="r-out" aria-live="polite"></div>
+  </form>
+  <section class="prose">
+    <h2>The rules in brief</h2>
+    <p>I = 1, V = 5, X = 10, L = 50, C = 100, D = 500 and M = 1,000. Symbols are added from largest to smallest, and a smaller symbol before a larger one is subtracted, but only in six pairs: IV, IX, XL, XC, CD and CM. No symbol repeats more than three times in a row, so 4 is IV, not IIII (clock faces are a famous exception).</p>
+    <p>Above 3,999, a bar over a symbol multiplies it by 1,000, so C̅D̅X̅X̅X̅I̅X̅ is 439,000 and C̅D̅X̅X̅X̅I̅X̅CDXXXIX is 439,439. The Romans had no symbol for zero.</p>
+  </section>
+  {% include ad.html slot="bottom" %}
+</div>

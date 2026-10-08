@@ -1,0 +1,38 @@
+---
+layout: default
+page_id: tools
+title: "Numerology calculator: life path, expression, mulank and bhagyank"
+description: "Free numerology calculator: life path, expression (destiny), soul urge, personality and personal year numbers, plus Chaldean name number, mulank and bhagyank."
+engine: true
+script: tools.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <a href="{{ '/tools/' | relative_url }}">Tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Numerology calculator</span></nav>
+  <h1>Numerology calculator</h1>
+  <p class="lede">Enter a full birth name and a date of birth. You get the core Pythagorean numbers, the Chaldean name number and the Indian mulank and bhagyank, each with its traditional meaning.</p>
+  <form class="panel tool" data-tool="numerology" novalidate>
+    <div class="form-grid">
+      <div class="field"><label for="nm-name">Full name at birth</label><input id="nm-name" type="text" autocomplete="name" placeholder="Ada Lovelace"></div>
+      <div class="field"><label for="nm-dob">Date of birth</label><input id="nm-dob" type="date"></div>
+    </div>
+    <div class="form-actions"><button class="btn btn-ink" type="submit">Calculate</button></div>
+    <p class="hint">Your name and date stay in your browser.</p>
+    <div class="result" id="nm-out" aria-live="polite"></div>
+  </form>
+
+  {% include lead-cta.html heading="Want a full reading or a lucky date?" text="Get a personal numerology report, a lucky date for a launch, wedding or move, or a name-spelling check from our partner numerologists." need="numerology" button="Request a reading" %}
+
+  <section class="prose">
+    <h2>How each number is calculated</h2>
+    <ul>
+      <li><strong>Life path:</strong> reduce the day, month and year of birth separately, add them and reduce again. 11, 22 and 33 are kept as master numbers.</li>
+      <li><strong>Expression (destiny):</strong> every letter of the full name has a value from 1 to 9 (A = 1 through I = 9, then J = 1 again); add them and reduce.</li>
+      <li><strong>Soul urge:</strong> the vowels of the name only. <strong>Personality:</strong> the consonants only.</li>
+      <li><strong>Personal year:</strong> birth day plus birth month plus the current year, reduced.</li>
+      <li><strong>Chaldean name number:</strong> an older system with different letter values and no 9; the total before reducing is called the compound number.</li>
+      <li><strong>Mulank and bhagyank:</strong> in Indian numerology, the mulank (root number) comes from the day of birth and the bhagyank (destiny number) from the full date.</li>
+    </ul>
+    <p class="fine">Numerology is a belief system, not a science. Use it for reflection and fun, never for medical, legal or financial decisions.</p>
+  </section>
+  {% include ad.html slot="bottom" %}
+</div>

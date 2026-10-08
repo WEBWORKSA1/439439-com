@@ -1,0 +1,80 @@
+---
+layout: default
+page_id: play
+title: "Play and win: daily number puzzle, Prime Rush and the monthly contest"
+description: "Reach the daily target with six number tiles, race the clock in Prime Rush, and enter the monthly 439 Challenge for prizes and a spot on the winners' list."
+engine: true
+script: play.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Play &amp; win</span></nav>
+  <header class="tool-hero">
+    <h1>Play and win</h1>
+    <p class="lede">A new target puzzle every day, a sixty-second prime sprint, and a monthly contest with prizes. Your scores stay in your browser; enter the contest to compete.</p>
+  </header>
+
+  <section class="panel tool" id="target-game" aria-labelledby="tg-h">
+    <div class="game-head"><h2 id="tg-h" class="mt-0">Daily target</h2><span class="stat-row"><span id="tg-date"></span><span id="tg-best"></span></span></div>
+    <p>Use the tiles and + − × ÷ to reach the target. Each tile once. Exact hit: 10 points. Within 5: 7 points. Within 10: 5 points.</p>
+    <div class="target" id="tg-target" aria-live="polite">—</div>
+    <div class="tiles" id="tg-tiles" aria-label="Number tiles"></div>
+    <div class="ops" aria-label="Operations">
+      <button class="op" type="button" data-op="+">+</button><button class="op" type="button" data-op="-">−</button>
+      <button class="op" type="button" data-op="*">×</button><button class="op" type="button" data-op="/">÷</button>
+      <button class="op" type="button" data-op="(">(</button><button class="op" type="button" data-op=")">)</button>
+    </div>
+    <p class="expr" id="tg-expr" aria-live="polite"></p>
+    <div class="form-actions">
+      <button class="btn btn-ink" type="button" id="tg-check">Check</button>
+      <button class="btn btn-ghost" type="button" id="tg-undo">Undo</button>
+      <button class="btn btn-ghost" type="button" id="tg-clear">Clear</button>
+      <button class="btn btn-ghost" type="button" id="tg-reveal">Show a solution</button>
+    </div>
+    <p class="form-status" id="tg-status" role="status" aria-live="polite"></p>
+  </section>
+
+  {% include ad.html slot="mid" %}
+
+  <section class="panel tool" id="rush-game" aria-labelledby="pr-h">
+    <div class="game-head"><h2 id="pr-h" class="mt-0">Prime Rush</h2><span class="stat-row"><span>Time <b id="pr-time">60</b>s</span><span>Score <b id="pr-score">0</b></span><span id="pr-best"></span></span></div>
+    <p>Is it prime? Answer as many as you can in 60 seconds. Right +1, wrong −1. Keyboard: P for prime, N for not prime.</p>
+    <div class="rush-num" id="pr-num" aria-live="polite">Ready?</div>
+    <div class="rush-btns"><button class="btn btn-ink" type="button" id="pr-yes" disabled>Prime</button><button class="btn btn-ghost" type="button" id="pr-no" disabled>Not prime</button></div>
+    <div class="form-actions"><button class="btn btn-gold" type="button" id="pr-start">Start</button></div>
+    <p class="form-status" id="pr-status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section id="contest" class="band" aria-labelledby="ct-h">
+    <h2 id="ct-h">The monthly 439 Challenge</h2>
+    <p class="lede" id="ct-prize">Monthly winners are featured on 439439.com and receive a prize announced on this page; sponsors may add to the pool.</p>
+    <div class="two-col" style="align-items:start">
+      <div>
+        <h3>Three ways to win</h3>
+        <ul>
+          <li><strong>Puzzle champion:</strong> submit your best daily target solutions. Judged on accuracy, then on elegance.</li>
+          <li><strong>Number story:</strong> up to 300 words on what a number means in your family, language or culture.</li>
+          <li><strong>Shorts maker:</strong> a 60-second video about any number, posted on YouTube or Instagram.</li>
+        </ul>
+        <p>Entries close on <span id="ct-close">the last day of each month (23:59 UTC)</span>. Winners are announced within 14 days. No purchase or donation is needed to enter or win. <a href="{{ '/contest-rules/' | relative_url }}">Read the official rules</a>.</p>
+        <h3>Winners</h3>
+        <p class="empty-state">The first winners will be announced here at the end of this month.</p>
+        <p>Want your brand on the prize? <a href="{{ '/advertise/' | relative_url }}">Become the contest sponsor</a>.</p>
+      </div>
+      <form class="panel" data-form="contest" data-subject="Contest entry" novalidate id="contest-form">
+        <h3 class="mt-0">Enter the contest</h3>
+        <div class="form-grid">
+          <div class="field"><label for="ce-name">Name</label><input id="ce-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="ce-email">Email</label><input id="ce-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="ce-country">Country</label><input id="ce-country" name="country" type="text" required></div>
+          <div class="field"><label for="ce-cat">Category</label><select id="ce-cat" name="category" required><option value="">Choose one</option><option>Puzzle champion</option><option>Number story</option><option>Shorts maker</option></select></div>
+          <div class="field field-wide"><label for="ce-entry">Your entry</label><textarea id="ce-entry" name="entry" rows="5" required placeholder="Paste your solution, your story, or the link to your video"></textarea></div>
+        </div>
+        <label class="check" style="margin-top:12px"><input type="checkbox" name="age_confirm" value="yes" required> <span>I am 18 or older (or the age of majority where I live).</span></label>
+        <label class="check" style="margin-top:8px"><input type="checkbox" name="rules_ok" value="yes" required> <span>I accept the <a href="{{ '/contest-rules/' | relative_url }}">contest rules</a>, including a skill-testing question if I win.</span></label>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-actions"><button class="btn btn-gold" type="submit">Submit my entry</button></div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</div>

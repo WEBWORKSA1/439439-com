@@ -1,0 +1,86 @@
+---
+layout: default
+page_id: support
+title: "Support 439439: keep the number tools free"
+description: "Support 439439.com with a one-time or monthly gift. You choose how it is used: operations, promotion, hiring writers and translators, or contest prizes."
+script: support.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Support</span></nav>
+  <header class="tool-hero">
+    <h1>Keep 439439 free for everyone</h1>
+    <p class="lede">Every page and tool here is free, with no sign-up. Supporters pay for hosting and data, reaching new readers, hiring writers and translators, and the monthly contest prizes. You decide how your gift is split.</p>
+  </header>
+
+  <div class="two-col" style="align-items:start">
+    <form class="panel" id="support-form" data-form="support" data-manual data-subject="Support pledge" data-keep novalidate>
+      <div id="instant-pay" hidden>
+        <h2 class="mt-0">Pay now</h2>
+        <p class="hint">Secure checkout with our payment providers.</p>
+        <div class="form-actions" id="instant-pay-buttons"></div>
+        <p class="hint">Or pledge below and we will send you a payment link.</p>
+      </div>
+
+      <fieldset>
+        <legend>Choose an amount</legend>
+        <div class="tiers" style="margin-top:10px">
+          <label class="choice tier"><input type="radio" name="amount" value="5"><span><b>5</b>A coffee for the team</span></label>
+          <label class="choice tier"><input type="radio" name="amount" value="15" checked><span><b>15</b>Keeps a tool online for a month</span></label>
+          <label class="choice tier"><input type="radio" name="amount" value="50"><span><b>50</b>Funds a translated page</span></label>
+          <label class="choice tier"><input type="radio" name="amount" value="150"><span><b>150</b>Adds to the contest prizes</span></label>
+          <label class="choice tier"><input type="radio" name="amount" value="500"><span><b>500</b>Patron: name on our supporters' wall</span></label>
+          <label class="choice tier"><input type="radio" name="amount" value="custom"><span><b>Other</b>Choose your own amount</span></label>
+        </div>
+        <div class="form-grid" style="margin-top:14px">
+          <div class="field" id="custom-wrap" hidden><label for="s-custom">Your amount</label><input id="s-custom" name="custom_amount" type="text" inputmode="decimal" placeholder="25"></div>
+          <div class="field"><label for="s-cur">Currency</label><select id="s-cur" name="currency"><option>USD</option><option>CAD</option><option>INR</option><option>EUR</option><option>GBP</option><option>AED</option></select></div>
+          <div class="field"><label for="s-freq">How often</label><select id="s-freq" name="frequency"><option>One time</option><option>Monthly</option><option>Yearly</option></select></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Where should it go? <span class="hint">(adds up to 100%)</span></legend>
+        <div class="alloc" style="margin-top:10px">
+          <label>Operations: hosting, data and new tools <output data-for="ops">40%</output><input type="range" name="alloc_operations" data-alloc="ops" min="0" max="100" step="5" value="40"></label>
+          <label>Promotion and marketing <output data-for="mkt">20%</output><input type="range" name="alloc_marketing" data-alloc="mkt" min="0" max="100" step="5" value="20"></label>
+          <label>Hiring writers, translators and editors <output data-for="hire">20%</output><input type="range" name="alloc_hiring" data-alloc="hire" min="0" max="100" step="5" value="20"></label>
+          <label>Contests and prizes <output data-for="prize">20%</output><input type="range" name="alloc_prizes" data-alloc="prize" min="0" max="100" step="5" value="20"></label>
+        </div>
+      </fieldset>
+
+      <div class="form-grid">
+        <div class="field"><label for="s-name">Your name</label><input id="s-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="s-email">Email</label><input id="s-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field field-wide"><label for="s-msg">Message (optional)</label><textarea id="s-msg" name="message" rows="3" placeholder="Why you support 439439, or a number you love"></textarea></div>
+      </div>
+      <label class="check" style="margin-top:14px"><input type="checkbox" name="public_thanks" value="yes"> <span>Thank me by name on the supporters' wall</span></label>
+      <label class="check" style="margin-top:8px"><input type="checkbox" name="consent" value="yes" required> <span>I understand this is a voluntary gift, not a purchase, and agree to the <a href="{{ '/terms/' | relative_url }}">terms</a>.</span></label>
+      <input type="hidden" name="amount_label" value="">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-actions"><button class="btn btn-gold" type="submit" id="support-submit">Pledge 15 USD</button></div>
+      <p class="form-status" role="status" aria-live="polite"></p>
+      <p class="hint">We email you a secure payment link (card, PayPal, UPI or bank transfer) within 1 to 2 business days. Nothing is charged until you use it.</p>
+    </form>
+
+    <div>
+      <h2 class="mt-0">Where your money goes</h2>
+      <dl class="ledger">
+        <div><dt>Operations</dt><dd>Hosting, data checks, new tools and keeping everything fast and ad-light.</dd></div>
+        <div><dt>Promotion</dt><dd>Reaching students, families and businesses who need number help.</dd></div>
+        <div><dt>Hiring</dt><dd>Paying writers, translators (Hindi, Chinese, Japanese, Spanish) and video editors.</dd></div>
+        <div><dt>Contests</dt><dd>Monthly prizes for puzzle solvers, storytellers and video makers.</dd></div>
+      </dl>
+      <p>Supporters receive a short note on how their gifts were used.</p>
+      <h2>Supporters' wall</h2>
+      <p class="empty-state">Be the first name here. Choose "Thank me by name" when you give.</p>
+      <h2>Other ways to help</h2>
+      <ul>
+        <li><a href="{{ '/advertise/' | relative_url }}">Sponsor a number page, tool or contest</a> for your business.</li>
+        <li><a href="{{ '/careers/' | relative_url }}">Write, translate or make videos</a> with us.</li>
+        <li><a href="{{ '/contact/' | relative_url }}">Send us a fact or a correction</a>; every page gets better with readers' help.</li>
+        <li>Share a page you liked. It costs nothing and helps a lot.</li>
+      </ul>
+      {% include share.html %}
+    </div>
+  </div>
+</div>

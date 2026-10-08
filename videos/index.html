@@ -1,0 +1,54 @@
+---
+layout: default
+page_id: videos
+title: "Number videos: math, culture, history and music"
+description: "Hand-picked videos on prime numbers, lucky numbers in Chinese and Japanese culture, the history of numerals, concert pitch and more, plus a creator programme for number videos."
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Videos</span></nav>
+  <header class="tool-hero">
+    <h1>Watch: numbers explained</h1>
+    <p class="lede">Hand-picked videos from educators, historians and musicians. Each plays in YouTube's privacy-enhanced player, and only when you press play. <a data-yt-subscribe hidden href="#" target="_blank" rel="noopener">Subscribe to our channel</a></p>
+  </header>
+  {%- assign groups = site.data.videos | group_by: "topic" -%}
+  {%- for g in groups %}
+  <section class="band" style="padding-top:20px;padding-bottom:12px" aria-labelledby="vt-{{ forloop.index }}">
+    <h2 id="vt-{{ forloop.index }}" class="mt-0">{{ g.name }}</h2>
+    <div class="video-grid">
+      {%- for v in g.items %}
+      <figure class="video">
+        <div class="video-frame"><button class="video-play" type="button" data-yt="{{ v.id }}" aria-label="Play: {{ v.title | escape }}"></button></div>
+        <figcaption>{{ v.title }}<small>{{ v.channel }}. {{ v.why }}</small></figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endfor %}
+
+  {% include ad.html slot="bottom" %}
+
+  <section class="two-col" style="align-items:start;margin-top:24px" aria-labelledby="creator-h">
+    <div>
+      <h2 id="creator-h" class="mt-0">Make number videos with us</h2>
+      <p>Creators can submit a video about a number for a feature on this page, enter it in the monthly Shorts maker contest, or pitch a paid collaboration.</p>
+      <ul>
+        <li>Featured videos link to your channel.</li>
+        <li>Monthly Shorts winners get a prize and a spot on our winners' list.</li>
+        <li>Sponsors can commission a series about their lucky number.</li>
+      </ul>
+    </div>
+    <form class="panel" data-form="creator" data-subject="Video submission" novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="cv-name">Name or channel</label><input id="cv-name" name="name" type="text" required></div>
+        <div class="field"><label for="cv-email">Email</label><input id="cv-email" name="email" type="email" required></div>
+        <div class="field field-wide"><label for="cv-url">Video link</label><input id="cv-url" name="video_url" type="url" placeholder="https://youtube.com/..." required></div>
+        <div class="field field-wide"><label for="cv-note">What the video is about</label><textarea id="cv-note" name="message" rows="3"></textarea></div>
+      </div>
+      <label class="check" style="margin-top:12px"><input type="checkbox" name="rights" value="yes" required> <span>I own this video or have permission to share it.</span></label>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-actions"><button class="btn btn-ink" type="submit">Submit video</button></div>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+  <p class="fine">Videos are embedded with YouTube's official player and remain the property of their creators.</p>
+</div>
