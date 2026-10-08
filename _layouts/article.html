@@ -1,0 +1,64 @@
+---
+layout: default
+---
+{%- assign updated = page.updated | default: page.date -%}
+<article class="article">
+  <header class="article-head wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span>
+      <a href="{{ '/blog/' | relative_url }}">Articles</a> <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ page.category | default: "Article" }}</span>
+    </nav>
+    {%- if page.hero_number %}<div class="article-number" aria-hidden="true">{{ page.hero_number }}</div>{% endif %}
+    <h1>{{ page.title }}</h1>
+    <p class="lede">{{ page.description }}</p>
+    <p class="meta">By the 439439 editorial team. Updated <time datetime="{{ updated | date: '%Y-%m-%d' }}">{{ updated | date: '%-d %B %Y' }}</time>. {{ page.reading_time | default: 6 }}-minute read.</p>
+  </header>
+
+  <div class="wrap article-grid">
+    <nav class="toc" data-toc aria-label="On this page"></nav>
+    <div class="prose" data-prose>
+      {{ content }}
+
+      {%- if page.faq %}
+      <section class="faq">
+        <h2 id="faq">Frequently asked questions</h2>
+        {%- for f in page.faq %}
+        <details{% if forloop.first %} open{% endif %}><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+        {%- endfor %}
+      </section>
+      {%- endif %}
+
+      {%- if page.sources %}
+      <section class="sources">
+        <h2 id="sources">Sources</h2>
+        <ol>{% for s in page.sources %}<li><a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.title }}</a></li>{% endfor %}</ol>
+      </section>
+      {%- endif %}
+
+      {% include share.html %}
+    </div>
+  </div>
+
+  <div class="wrap">
+    {% include ad.html slot="bottom" %}
+    {%- unless page.cta == false %}
+    {% include lead-cta.html heading=page.cta_heading text=page.cta_text need=page.cta_need button=page.cta_button %}
+    {%- endunless %}
+    <section class="related" aria-labelledby="related-h">
+      <h2 id="related-h">Keep reading</h2>
+      <ul class="article-list">
+        {%- assign others = site.articles | sort: "date" | reverse -%}
+        {%- assign shown = 0 -%}
+        {%- for a in others -%}
+          {%- if a.url != page.url and shown < 3 -%}
+          <li><a href="{{ a.url | relative_url }}"><span class="al-num">{{ a.hero_number }}</span><span class="al-title">{{ a.title }}</span></a><p>{{ a.description }}</p></li>
+          {%- assign shown = shown | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </section>
+  </div>
+</article>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"datePublished":"{{ page.date | date: '%Y-%m-%d' }}","dateModified":"{{ updated | date: '%Y-%m-%d' }}","author":{"@type":"Organization","name":"439439 editorial team"},"publisher":{"@type":"Organization","name":"439439","logo":{"@type":"ImageObject","url":"{{ site.canonical_base }}/favicon.svg"}},"mainEntityOfPage":"{{ site.canonical_base }}{{ page.url }}"}{% if page.faq %},{"@type":"FAQPage","mainEntity":[{% for f in page.faq %}{"@type":"Question","name":{{ f.q | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ f.a | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}]}{% endif %}]}</script>

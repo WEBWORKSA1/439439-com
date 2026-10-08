@@ -1,0 +1,1 @@
+{%- assign cs = include.n | append: "" -%}{%- assign cl = cs | size -%}{%- capture cout -%}{%- for ci in (1..cl) -%}{%- assign cidx = ci | minus: 1 -%}{{ cs | slice: cidx }}{%- assign crem = cl | minus: ci -%}{%- assign cmod = crem | modulo: 3 -%}{%- if crem > 0 and cmod == 0 -%},{%- endif -%}{%- endfor -%}{%- endcapture -%}{{ cout }}

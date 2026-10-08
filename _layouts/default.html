@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang }}">
+<head>
+{% include head.html %}
+</head>
+<body data-page="{{ page.page_id | default: page.collection | default: 'page' }}">
+<a class="skip" href="#main">Skip to content</a>
+{% include topbar.html %}
+{% include header.html %}
+<main id="main">
+{{ content }}
+</main>
+{% include footer.html %}
+{% include scripts.html %}
+</body>
+</html>
