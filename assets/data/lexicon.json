@@ -1,0 +1,6 @@
+---
+layout: null
+permalink: /assets/data/lexicon.json
+sitemap: false
+---
+{{ site.data.lexicon | jsonify }}
