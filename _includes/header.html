@@ -1,0 +1,26 @@
+{%- assign u = page.url -%}
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="439439 home">
+      {% include logo.svg %}
+      <span class="brand-name">439439</span>
+    </a>
+    <form class="header-search" action="{{ '/explorer/' | relative_url }}" method="get" role="search">
+      <label class="sr-only" for="hs-n">Look up a number</label>
+      <input id="hs-n" name="n" type="text" inputmode="numeric" pattern="[0-9 ,]*" maxlength="19" placeholder="Look up any number" autocomplete="off">
+      <button type="submit" aria-label="Look up">Go</button>
+    </form>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="nav" aria-label="Main">
+      <a href="{{ '/explorer/' | relative_url }}"{% if u contains '/explorer/' %} aria-current="page"{% endif %}>Explorer</a>
+      <a href="{{ '/numbers/' | relative_url }}"{% if u contains '/number' %} aria-current="page"{% endif %}>Numbers</a>
+      <a href="{{ '/tools/' | relative_url }}"{% if u contains '/tools/' %} aria-current="page"{% endif %}>Tools</a>
+      <a href="{{ '/culture/' | relative_url }}"{% if u contains '/culture/' %} aria-current="page"{% endif %}>Culture</a>
+      <a href="{{ '/angel-numbers/' | relative_url }}"{% if u contains '/angel-numbers/' %} aria-current="page"{% endif %}>Angel numbers</a>
+      <a href="{{ '/play/' | relative_url }}"{% if u contains '/play/' %} aria-current="page"{% endif %}>Play &amp; win</a>
+      <a href="{{ '/blog/' | relative_url }}"{% if u contains '/blog/' %} aria-current="page"{% endif %}>Blog</a>
+      <a class="btn btn-gold nav-cta" href="{{ '/services/' | relative_url }}">Get expert help</a>
+      <button class="theme-toggle" type="button" aria-label="Switch colour theme"><span aria-hidden="true"></span></button>
+    </nav>
+  </div>
+</header>

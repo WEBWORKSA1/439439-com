@@ -1,0 +1,62 @@
+# Curated YouTube videos (embedded with the official privacy-enhanced player).
+# To feature your own channel, add entries at the top: id is the 11-character video ID.
+- id: pT52hREAf18
+  title: "Chinese Lucky Numbers"
+  channel: "Numberphile"
+  topic: "Culture"
+  why: "Why 8 is lucky and 4 is avoided, explained by mathematicians."
+- id: yi-s-TTpLxY
+  title: "Divisibility Tricks"
+  channel: "Numberphile"
+  topic: "Math"
+  why: "Quick tests for 7, 11 and 13: the same family as the ABCABC trick."
+- id: EK32jo7i5LQ
+  title: "Why do prime numbers make these spirals?"
+  channel: "3Blue1Brown"
+  topic: "Math"
+  why: "A beautiful, animated look at hidden patterns in the primes."
+- id: cZH0YnFpjwU
+  title: "A brief history of numerical systems"
+  channel: "TED-Ed"
+  topic: "History"
+  why: "From tally marks to the Hindu-Arabic numerals we use today."
+- id: quOdF1CAPXs
+  title: "Where do superstitions come from?"
+  channel: "TED-Ed"
+  topic: "Culture"
+  why: "A psychologist on why lucky and unlucky numbers stick."
+- id: 94F5sTXhhjg
+  title: "A Complete Guide to Japanese Numbers"
+  channel: "JapanesePod101"
+  topic: "Language"
+  why: "The readings behind Japanese number puns, including shi and yon."
+- id: lEdyGvq0hBI
+  title: "Why 4 is considered an evil number in China"
+  channel: "WION"
+  topic: "Culture"
+  why: "A news segment on tetraphobia and missing fourth floors."
+- id: iCuhx5zvetg
+  title: "History of Touch-Tone Telephones"
+  channel: "Decades TV Network"
+  topic: "Keypads"
+  why: "How the push-button keypad, and its letters, arrived."
+- id: EKTZ151yLnk
+  title: "A = 432Hz"
+  channel: "Adam Neely"
+  topic: "Music"
+  why: "How orchestras settled on A = 440 Hz, and why other pitches were tried."
+- id: ZyNmtG57RcU
+  title: "Vandal Kingdom in Africa and the Sack of Rome in 455"
+  channel: "Kings and Generals"
+  topic: "History"
+  why: "The Vandals' capture of Carthage in AD 439 and what followed."
+- id: gzBmW13CZDY
+  title: "Numerology and Gematria in the Biblical Period"
+  channel: "Scripture Through Ancient Eyes"
+  topic: "Numerology"
+  why: "Why ancient readers took numbers seriously, told as history."
+- id: M4vqr3_ROIk
+  title: "Lightning calculation and other mathemagic"
+  channel: "TED"
+  topic: "Math"
+  why: "Arthur Benjamin's classic mental-math performance."

@@ -1,0 +1,50 @@
+{
+  "elements": [["",""],
+    ["H","Hydrogen"],["He","Helium"],["Li","Lithium"],["Be","Beryllium"],["B","Boron"],["C","Carbon"],["N","Nitrogen"],["O","Oxygen"],["F","Fluorine"],["Ne","Neon"],
+    ["Na","Sodium"],["Mg","Magnesium"],["Al","Aluminium"],["Si","Silicon"],["P","Phosphorus"],["S","Sulfur"],["Cl","Chlorine"],["Ar","Argon"],["K","Potassium"],["Ca","Calcium"],
+    ["Sc","Scandium"],["Ti","Titanium"],["V","Vanadium"],["Cr","Chromium"],["Mn","Manganese"],["Fe","Iron"],["Co","Cobalt"],["Ni","Nickel"],["Cu","Copper"],["Zn","Zinc"],
+    ["Ga","Gallium"],["Ge","Germanium"],["As","Arsenic"],["Se","Selenium"],["Br","Bromine"],["Kr","Krypton"],["Rb","Rubidium"],["Sr","Strontium"],["Y","Yttrium"],["Zr","Zirconium"],
+    ["Nb","Niobium"],["Mo","Molybdenum"],["Tc","Technetium"],["Ru","Ruthenium"],["Rh","Rhodium"],["Pd","Palladium"],["Ag","Silver"],["Cd","Cadmium"],["In","Indium"],["Sn","Tin"],
+    ["Sb","Antimony"],["Te","Tellurium"],["I","Iodine"],["Xe","Xenon"],["Cs","Caesium"],["Ba","Barium"],["La","Lanthanum"],["Ce","Cerium"],["Pr","Praseodymium"],["Nd","Neodymium"],
+    ["Pm","Promethium"],["Sm","Samarium"],["Eu","Europium"],["Gd","Gadolinium"],["Tb","Terbium"],["Dy","Dysprosium"],["Ho","Holmium"],["Er","Erbium"],["Tm","Thulium"],["Yb","Ytterbium"],
+    ["Lu","Lutetium"],["Hf","Hafnium"],["Ta","Tantalum"],["W","Tungsten"],["Re","Rhenium"],["Os","Osmium"],["Ir","Iridium"],["Pt","Platinum"],["Au","Gold"],["Hg","Mercury"],
+    ["Tl","Thallium"],["Pb","Lead"],["Bi","Bismuth"],["Po","Polonium"],["At","Astatine"],["Rn","Radon"],["Fr","Francium"],["Ra","Radium"],["Ac","Actinium"],["Th","Thorium"],
+    ["Pa","Protactinium"],["U","Uranium"],["Np","Neptunium"],["Pu","Plutonium"],["Am","Americium"],["Cm","Curium"],["Bk","Berkelium"],["Cf","Californium"],["Es","Einsteinium"],["Fm","Fermium"],
+    ["Md","Mendelevium"],["No","Nobelium"],["Lr","Lawrencium"],["Rf","Rutherfordium"],["Db","Dubnium"],["Sg","Seaborgium"],["Bh","Bohrium"],["Hs","Hassium"],["Mt","Meitnerium"],["Ds","Darmstadtium"],
+    ["Rg","Roentgenium"],["Cn","Copernicium"],["Nh","Nihonium"],["Fl","Flerovium"],["Mc","Moscovium"],["Lv","Livermorium"],["Ts","Tennessine"],["Og","Oganesson"]
+  ],
+  "calling": {
+    "1": "United States, Canada and other North American Numbering Plan countries", "7": "Russia and Kazakhstan",
+    "20": "Egypt", "27": "South Africa", "30": "Greece", "31": "Netherlands", "32": "Belgium", "33": "France", "34": "Spain", "36": "Hungary",
+    "39": "Italy and Vatican City", "40": "Romania", "41": "Switzerland", "43": "Austria", "44": "United Kingdom", "45": "Denmark", "46": "Sweden",
+    "47": "Norway", "48": "Poland", "49": "Germany", "51": "Peru", "52": "Mexico", "53": "Cuba", "54": "Argentina", "55": "Brazil", "56": "Chile",
+    "57": "Colombia", "58": "Venezuela", "60": "Malaysia", "61": "Australia", "62": "Indonesia", "63": "Philippines", "64": "New Zealand",
+    "65": "Singapore", "66": "Thailand", "81": "Japan", "82": "South Korea", "84": "Vietnam", "86": "China", "90": "Türkiye", "91": "India",
+    "92": "Pakistan", "93": "Afghanistan", "94": "Sri Lanka", "95": "Myanmar", "98": "Iran",
+    "212": "Morocco", "213": "Algeria", "216": "Tunisia", "218": "Libya", "220": "Gambia", "221": "Senegal", "233": "Ghana", "234": "Nigeria",
+    "251": "Ethiopia", "254": "Kenya", "255": "Tanzania", "256": "Uganda", "260": "Zambia", "263": "Zimbabwe",
+    "351": "Portugal", "352": "Luxembourg", "353": "Ireland", "354": "Iceland", "356": "Malta", "357": "Cyprus", "358": "Finland", "359": "Bulgaria",
+    "370": "Lithuania", "371": "Latvia", "372": "Estonia", "380": "Ukraine", "381": "Serbia", "385": "Croatia", "386": "Slovenia",
+    "420": "Czechia", "421": "Slovakia", "852": "Hong Kong", "853": "Macao", "855": "Cambodia", "856": "Laos", "880": "Bangladesh", "886": "Taiwan",
+    "960": "Maldives", "961": "Lebanon", "962": "Jordan", "963": "Syria", "964": "Iraq", "965": "Kuwait", "966": "Saudi Arabia", "967": "Yemen",
+    "968": "Oman", "970": "Palestine", "971": "United Arab Emirates", "972": "Israel", "973": "Bahrain", "974": "Qatar", "975": "Bhutan",
+    "976": "Mongolia", "977": "Nepal", "992": "Tajikistan", "993": "Turkmenistan", "994": "Azerbaijan", "995": "Georgia", "996": "Kyrgyzstan", "998": "Uzbekistan"
+  },
+  "http": {
+    "100": "Continue", "101": "Switching Protocols", "200": "OK", "201": "Created", "202": "Accepted", "204": "No Content", "206": "Partial Content",
+    "301": "Moved Permanently", "302": "Found", "303": "See Other", "304": "Not Modified", "307": "Temporary Redirect", "308": "Permanent Redirect",
+    "400": "Bad Request", "401": "Unauthorized", "402": "Payment Required", "403": "Forbidden", "404": "Not Found", "405": "Method Not Allowed",
+    "406": "Not Acceptable", "408": "Request Timeout", "409": "Conflict", "410": "Gone", "413": "Content Too Large", "414": "URI Too Long",
+    "415": "Unsupported Media Type", "418": "I'm a teapot (an April Fools' joke code)", "422": "Unprocessable Content", "429": "Too Many Requests",
+    "451": "Unavailable For Legal Reasons", "500": "Internal Server Error", "501": "Not Implemented", "502": "Bad Gateway",
+    "503": "Service Unavailable", "504": "Gateway Timeout"
+  },
+  "emergency": {
+    "15": "Medical emergencies (SAMU) in France", "17": "Police in France", "18": "Fire brigade in France",
+    "100": "Police helpline in India, being merged into 112", "101": "Fire services in India", "102": "Ambulance in India",
+    "108": "Emergency ambulance service in many Indian states", "110": "Police in China, Japan and Germany",
+    "112": "Emergency number across the European Union, and India's unified emergency line",
+    "119": "Fire and ambulance in Japan and South Korea; fire in China", "120": "Ambulance in China",
+    "911": "Emergency number in the United States and Canada", "999": "Emergency number in the UK (since 1937), Hong Kong and Malaysia"
+  }
+}

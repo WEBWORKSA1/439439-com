@@ -1,0 +1,78 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <section class="newsletter" aria-labelledby="nl-title">
+      <div>
+        <h2 id="nl-title">One number a day, in your inbox</h2>
+        <p>A short daily note: one number, its math, its meaning across cultures and a puzzle. Free, and you can unsubscribe any time.</p>
+      </div>
+      <form class="nl-form" data-form="newsletter" data-subject="Newsletter signup" novalidate>
+        <label class="sr-only" for="nl-email">Email address</label>
+        <input id="nl-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+        <input type="hidden" name="source" value="footer {{ page.url }}">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-ink" type="submit">Subscribe</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <div class="footer-cols">
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="{{ '/explorer/' | relative_url }}">Number explorer</a></li>
+          <li><a href="{{ '/numbers/' | relative_url }}">Numbers 0 to 1,000</a></li>
+          <li><a href="{{ '/439439/' | relative_url }}">The 439439 story</a></li>
+          <li><a href="{{ '/culture/' | relative_url }}">Numbers across cultures</a></li>
+          <li><a href="{{ '/angel-numbers/' | relative_url }}">Angel numbers</a></li>
+          <li><a href="{{ '/blog/' | relative_url }}">Articles</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="{{ '/tools/number-to-words/' | relative_url }}">Number to words</a></li>
+          <li><a href="{{ '/tools/phone-keypad/' | relative_url }}">Phone keypad words</a></li>
+          <li><a href="{{ '/tools/numerology/' | relative_url }}">Numerology calculator</a></li>
+          <li><a href="{{ '/tools/lucky-number/' | relative_url }}">Lucky number checker</a></li>
+          <li><a href="{{ '/tools/prime-factorization/' | relative_url }}">Prime factorization</a></li>
+          <li><a href="{{ '/tools/base-converter/' | relative_url }}">Base converter</a></li>
+          <li><a href="{{ '/tools/roman-numerals/' | relative_url }}">Roman numerals</a></li>
+          <li><a href="{{ '/tools/abcabc-trick/' | relative_url }}">The ABCABC trick</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Community</h3>
+        <ul>
+          <li><a href="{{ '/play/' | relative_url }}">Play &amp; win</a></li>
+          <li><a href="{{ '/contest-rules/' | relative_url }}">Contest rules</a></li>
+          <li><a href="{{ '/videos/' | relative_url }}">Videos</a></li>
+          <li><a href="{{ '/careers/' | relative_url }}">Careers</a></li>
+          <li><a href="{{ '/support/' | relative_url }}">Support 439439</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Business</h3>
+        <ul>
+          <li><a href="{{ '/services/' | relative_url }}">Get expert help</a></li>
+          <li><a href="{{ '/advertise/' | relative_url }}">Advertise &amp; sponsor</a></li>
+          <li><a href="{{ site.contact_url }}" target="_blank" rel="noopener">Partnerships</a></li>
+          <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+          <li><a href="#" data-mail="439439.com enquiry">Email us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>About</h3>
+        <ul>
+          <li><a href="{{ '/about/' | relative_url }}">About 439439</a></li>
+          <li><a href="{{ '/privacy/' | relative_url }}">Privacy</a></li>
+          <li><a href="{{ '/terms/' | relative_url }}">Terms</a></li>
+          <li><a href="{{ '/disclaimer/' | relative_url }}">Disclaimer &amp; trademarks</a></li>
+          <li><a href="{{ '/blog/feed.xml' | relative_url }}">RSS feed</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="disclosure">439439.com is an independent information site. A number cannot be owned; names and marks mentioned on this site belong to their owners and are used only to describe them. Numerology and luck readings are cultural traditions shared for interest and entertainment, not predictions. Nothing here is legal, financial or medical advice. <a href="{{ '/disclaimer/' | relative_url }}">Full disclaimer and trademark notice</a>.</p>
+    <p class="copyright">© {{ site.time | date: '%Y' }} 439439.com. Original text and code; facts are cited where they come from outside sources.</p>
+  </div>
+</footer>

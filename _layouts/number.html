@@ -1,0 +1,222 @@
+---
+layout: default
+---
+{%- assign key = page.slug | append: "" -%}
+{%- assign n = key | plus: 0 -%}
+{%- if n > 1000 -%}{%- assign shard = "x" -%}{%- else -%}{%- assign shard = n | divided_by: 100 | floor | append: "" -%}{%- endif -%}
+{%- assign d = site.data.n[shard][key] -%}
+{%- assign lex = site.data.lexicon -%}
+{%- assign facts = site.data.facts -%}
+{%- assign chars = key | split: "" -%}
+{%- assign udigits = chars | uniq -%}
+{%- assign len = key | size -%}
+{%- assign t = d[3] -%}
+{%- assign props = d[19] | split: " " -%}
+{%- assign divs = d[6] | split: ", " -%}
+{%- assign kp = ",,ABC,DEF,GHI,JKL,MNO,PQRS,TUV,WXYZ" | split: "," -%}
+{%- assign lk = d[22] | split: "" -%}
+{%- assign cx = d[23] | split: " " -%}
+{%- capture nfmt -%}{% include commas.html n=key %}{%- endcapture -%}
+{%- assign hub = n | divided_by: 100 | floor | times: 100 -%}
+{%- if hub == 1000 -%}{%- assign hub = 900 -%}{%- endif -%}
+{%- assign hubend = hub | plus: 99 -%}
+{%- if n > 1000 -%}{%- assign hubid = "notable" -%}{%- capture hublabel -%}Notable numbers{%- endcapture -%}{%- else -%}{%- capture hubid -%}r{{ hub }}{%- endcapture -%}{%- capture hublabel -%}{{ hub }} to {% if hub == 900 %}1,000{% else %}{{ hubend }}{% endif %}{%- endcapture -%}{%- endif -%}
+{%- assign dsum = 0 -%}{%- assign dprod = 1 -%}
+{%- for c in chars -%}{%- assign dsum = dsum | plus: c -%}{%- assign dprod = dprod | times: c -%}{%- endfor -%}
+{%- assign root = dsum -%}
+{%- for i in (1..4) -%}{%- if root > 9 -%}{%- assign rs = root | append: "" | split: "" -%}{%- assign root = 0 -%}{%- for c in rs -%}{%- assign root = root | plus: c -%}{%- endfor -%}{%- endif -%}{%- endfor -%}
+{%- capture pidx -%}{%- assign pi = d[4] -%}{%- assign m100 = pi | modulo: 100 -%}{%- assign m10 = pi | modulo: 10 -%}{{ pi }}{% if m100 >= 11 and m100 <= 13 %}th{% elsif m10 == 1 %}st{% elsif m10 == 2 %}nd{% elsif m10 == 3 %}rd{% else %}th{% endif %}{%- endcapture -%}
+{%- capture typephrase -%}{% if t == "p" %}a prime number{% if d[4] > 0 %}, the {{ pidx }} prime{% endif %}{% elsif t == "c" %}a composite number{% elsif t == "u" %}neither prime nor composite: it is the unit{% else %}zero, which is neither prime nor composite{% endif %}{%- endcapture -%}
+{%- assign spf = divs[1] -%}
+{%- capture a_prime -%}{% if t == "p" %}Yes. {{ key }} is a prime number{% if d[4] > 0 %}, the {{ pidx }} prime{% endif %}. Its only divisors are 1 and {{ key }}.{% elsif t == "c" %}No. {{ key }} is composite: it is divisible by {{ spf }}, and its prime factorization is {{ d[5] | strip_html }}.{% elsif t == "u" %}No. 1 is neither prime nor composite, because a prime needs exactly two divisors.{% else %}No. Zero is neither prime nor composite.{% endif %}{%- endcapture -%}
+{%- capture a_factors -%}{% if n == 0 %}Every whole number divides 0, so it has no finite list of factors.{% else %}{{ key }} has {{ d[7] }} divisor{% if d[7] != 1 %}s{% endif %}{% if d[6] != "" %}: {{ d[6] }}{% endif %}. They add up to {{ d[8] }}.{% endif %}{%- endcapture -%}
+{%- capture a_words -%}{{ key }} is written "{{ d[0] }}"{% if d[2] != "" %} (international style). In the Indian system it is "{{ d[2] }}"{% endif %}. As an ordinal it is "{{ d[1] }}".{%- endcapture -%}
+{%- capture a_roman -%}{% if d[16] != "" %}{{ key }} in Roman numerals is {{ d[16] }}.{% else %}{{ key }} has no standard Roman numeral.{% endif %}{%- endcapture -%}
+{%- capture a_binary -%}{{ key }} in binary is {{ d[12] }}. In hexadecimal it is {{ d[14] }}, and in octal {{ d[13] }}.{%- endcapture -%}
+{%- assign nrkey = d[21] | append: "" -%}{%- assign nm = lex.numerology[nrkey] -%}
+{%- capture a_meaning -%}{% if nm %}In Pythagorean numerology the digits of {{ key }} add up to {{ dsum }}, which reduces to {{ d[21] }}, "{{ nm.title }}" ({{ nm.keys }}). In angel-number tradition its digits point to {% for c in udigits %}{{ lex.digits[c].angel }}{% unless forloop.last %}; {% endunless %}{% endfor %}.{% else %}Zero stands for wholeness and potential in angel-number tradition.{% endif %}{%- endcapture -%}
+
+<nav class="crumbs wrap" aria-label="Breadcrumb">
+  <a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span>
+  <a href="{{ '/numbers/' | relative_url }}">Numbers</a> <span aria-hidden="true">/</span>
+  <a href="{{ '/numbers/' | relative_url }}#{{ hubid }}">{{ hublabel }}</a> <span aria-hidden="true">/</span>
+  <span aria-current="page">{{ nfmt }}</span>
+</nav>
+
+<article class="numpage" data-n="{{ key }}">
+  <header class="num-hero wrap">
+    <div class="num-figure" aria-hidden="true">
+      <div class="num-big" style="--len: {{ len }}">{{ key }}</div>
+      <div class="num-letters">{% for c in chars %}{% assign ki = c | plus: 0 %}<span>{% if kp[ki] != "" %}{{ kp[ki] }}{% else %}&nbsp;{% endif %}</span>{% endfor %}</div>
+    </div>
+    <div class="num-intro">
+      <h1>{{ nfmt }}: meaning, factors and facts</h1>
+      <p class="lede">{{ nfmt }} is {{ typephrase }}. In words it is <strong>{{ d[0] }}</strong>{% if d[2] != "" %}, or {{ d[2] }} in the Indian system{% endif %}.</p>
+      <ul class="tags" aria-label="Number types">
+        {%- for p in props %}<li title="{{ lex.props[p].desc }}">{{ lex.props[p].label }}</li>{% endfor -%}
+      </ul>
+      <p class="num-actions"><a class="btn btn-ink" href="{{ '/explorer/' | relative_url }}?n={{ key }}">Open in the explorer</a> <a class="btn btn-ghost" href="#lucky">Is it lucky?</a></p>
+    </div>
+  </header>
+
+  <div class="wrap num-body">
+    {%- assign cur = site.data.curated[key] -%}
+    {%- if cur %}
+    {%- capture bhref -%}href="{{ site.baseurl }}/{%- endcapture -%}
+    <aside class="callout"><h2>Why {{ nfmt }} stands out</h2><p>{{ cur | replace: 'href="/', bhref }}</p></aside>
+    {%- endif %}
+
+    <section aria-labelledby="facts">
+      <h2 id="facts">Quick facts</h2>
+      <dl class="ledger">
+        <div><dt>Type</dt><dd>{% if t == "p" %}Prime{% elsif t == "c" %}Composite{% elsif t == "u" %}Unit (neither){% else %}Zero (neither){% endif %}{% if d[4] > 0 %}, the {{ pidx }} prime{% endif %}</dd></div>
+        <div><dt>Parity</dt><dd>{% if props contains "ev" %}Even{% else %}Odd{% endif %}</dd></div>
+        {%- if d[5] != "" %}<div><dt>Prime factorization</dt><dd>{{ d[5] }}</dd></div>{% endif %}
+        {%- if n > 0 %}<div><dt>Number of divisors</dt><dd>{{ d[7] }}</dd></div>
+        <div><dt>Sum of divisors</dt><dd>{% assign v8 = d[8] %}{% include commas.html n=v8 %}</dd></div>
+        <div><dt>Euler's totient φ</dt><dd>{% assign v9 = d[9] %}{% include commas.html n=v9 %}</dd></div>{% endif %}
+        <div><dt>Digit sum</dt><dd>{{ dsum }} (digital root {{ root }})</dd></div>
+        <div><dt>Digit product</dt><dd>{% include commas.html n=dprod %}</dd></div>
+        <div><dt>Square root</dt><dd>{{ d[17] }}</dd></div>
+        <div><dt>Cube root</dt><dd>{{ d[18] }}</dd></div>
+        <div><dt>Square</dt><dd>{% assign sqv = n | times: n %}{% include commas.html n=sqv %}</dd></div>
+        {%- assign v10 = d[10] -%}{%- assign v11 = d[11] -%}
+        {%- if d[10] > 0 %}<div><dt>Previous prime</dt><dd>{% if d[10] <= 1000 %}<a href="{{ '/number/' | relative_url }}{{ d[10] }}/">{% include commas.html n=v10 %}</a>{% else %}<a href="{{ '/explorer/' | relative_url }}?n={{ d[10] }}">{% include commas.html n=v10 %}</a>{% endif %}</dd></div>{% endif %}
+        <div><dt>Next prime</dt><dd>{% if d[11] <= 1000 %}<a href="{{ '/number/' | relative_url }}{{ d[11] }}/">{% include commas.html n=v11 %}</a>{% else %}<a href="{{ '/explorer/' | relative_url }}?n={{ d[11] }}">{% include commas.html n=v11 %}</a>{% endif %}</dd></div>
+      </dl>
+    </section>
+
+    {% include ad.html slot="top" %}
+
+    <section aria-labelledby="prime">
+      <h2 id="prime">Is {{ nfmt }} a prime number?</h2>
+      <p>{{ a_prime }}{% if t == "p" and n > 3 %} To confirm it, it is enough to test division by every prime up to √{{ key }} ≈ {{ d[17] }}; none of them divides it.{% endif %}</p>
+    </section>
+
+    {%- if n > 0 %}
+    <section aria-labelledby="factors">
+      <h2 id="factors">Factors of {{ nfmt }}</h2>
+      <p>{{ a_factors }}</p>
+      {%- if d[7] > 1 and d[7] <= 64 %}
+      <p>Factor pairs:</p>
+      <ul class="pairs">{% for dv in divs %}{% assign dvn = dv | plus: 0 %}{% assign sq = dvn | times: dvn %}{% if sq <= n %}{% assign other = n | divided_by: dvn %}<li>{{ dv }} × {{ other }}</li>{% endif %}{% endfor %}</ul>
+      {%- endif %}
+      {%- if props contains "aa" %}
+      <p>Because {{ key }} is a three-digit block written twice, it equals {{ chars[0] }}{{ chars[1] }}{{ chars[2] }} × 1001, and 1001 = 7 × 11 × 13. <a href="{{ '/tools/abcabc-trick/' | relative_url }}">Try the ABCABC trick</a>.</p>
+      {%- endif %}
+    </section>
+    {%- endif %}
+
+    <section aria-labelledby="words">
+      <h2 id="words">How to write {{ nfmt }} in words</h2>
+      <dl class="ledger">
+        <div><dt>US and international</dt><dd>{{ d[0] }}</dd></div>
+        {%- if d[2] != "" %}<div><dt>Indian system</dt><dd>{{ d[2] }}</dd></div>{% endif %}
+        <div><dt>Ordinal</dt><dd>{{ d[1] }}</dd></div>
+      </dl>
+      <div class="more-words" data-more-words="{{ key }}">
+        <noscript><p>Turn on JavaScript to see {{ key }} in Hindi, Chinese, Japanese, Spanish, French, German and on cheques.</p></noscript>
+      </div>
+      <p><a href="{{ '/tools/number-to-words/' | relative_url }}?n={{ key }}">Write any amount in words or on a cheque</a></p>
+    </section>
+
+    <section aria-labelledby="bases">
+      <h2 id="bases">{{ nfmt }} in binary, hexadecimal and Roman numerals</h2>
+      <dl class="ledger mono-values">
+        <div><dt>Binary (base 2)</dt><dd>{{ d[12] }}</dd></div>
+        <div><dt>Octal (base 8)</dt><dd>{{ d[13] }}</dd></div>
+        <div><dt>Hexadecimal (base 16)</dt><dd>{{ d[14] }}</dd></div>
+        <div><dt>Base 36</dt><dd>{{ d[15] }}</dd></div>
+        <div><dt>Roman numerals</dt><dd>{% if d[16] != "" %}{{ d[16] }}{% else %}None (the Romans had no zero, and the classic system stops below 4,000,000){% endif %}</dd></div>
+      </dl>
+      <div class="scripts" data-scripts="{{ key }}"></div>
+    </section>
+
+    {% include ad.html slot="mid" %}
+
+    <section aria-labelledby="keypad">
+      <h2 id="keypad">{{ nfmt }} on a phone keypad</h2>
+      <div class="keystrip" aria-label="Letters on each key">{% for c in chars %}{% assign ki = c | plus: 0 %}<span class="keycap"><b>{{ c }}</b><small>{% if kp[ki] != "" %}{{ kp[ki] }}{% else %}–{% endif %}</small></span>{% endfor %}</div>
+      {%- if d[20] != "" %}
+      <p>On a standard keypad, {{ key }} can spell: {% assign kws = d[20] | split: " " %}{% for w in kws %}<strong>{{ w }}</strong>{% unless forloop.last %}, {% endunless %}{% endfor %}.</p>
+      {%- elsif key contains "0" or key contains "1" %}
+      <p>The keys 0 and 1 carry no letters, so {{ key }} cannot spell a whole word. Phone numbers often keep those digits and spell the rest.</p>
+      {%- else %}
+      <p>No common English word matches all of {{ key }}'s keys. Try longer numbers or partial words in the keypad tool.</p>
+      {%- endif %}
+      <p><a href="{{ '/tools/phone-keypad/' | relative_url }}?n={{ key }}">Find words in any phone number</a></p>
+    </section>
+
+    <section aria-labelledby="meaning">
+      <h2 id="meaning">What does {{ nfmt }} mean?</h2>
+      {%- if nm %}
+      <p>In Pythagorean numerology, add the digits: {% for c in chars %}{{ c }}{% unless forloop.last %} + {% endunless %}{% endfor %} = {{ dsum }}{% if dsum != d[21] %}, which reduces to {{ d[21] }}{% endif %}. {{ d[21] }} is <strong>{{ nm.title }}</strong>: {{ nm.keys }}. {{ nm.text }}</p>
+      {%- endif %}
+      <p>In angel-number tradition, each digit carries a theme. {{ key }} combines {% for c in udigits %}<strong>{{ c }}</strong> ({{ lex.digits[c].angel }}){% unless forloop.last %}, {% endunless %}{% endfor %}.{% if props contains "re" %} A single digit repeated is read as that message amplified.{% elsif props contains "aa" %} A three-digit block written twice is read as the same message repeated for emphasis.{% elsif props contains "pa" %} As a palindrome, it is read as a message of balance and reflection.{% endif %}</p>
+      <p class="fine">Numerology and angel numbers are belief traditions, shared here for cultural interest. <a href="{{ '/angel-numbers/' | relative_url }}">How angel numbers are read</a>.</p>
+    </section>
+
+    <section id="lucky" aria-labelledby="lucky-h">
+      <h2 id="lucky-h">Is {{ nfmt }} lucky? A culture check</h2>
+      <table class="t-culture">
+        <thead><tr><th scope="col">Culture</th><th scope="col">Verdict</th><th scope="col">Why</th></tr></thead>
+        <tbody>
+        {%- assign ccodes = "cn,jp,kr,th,we" | split: "," -%}
+        {%- for cc in ccodes %}
+          {%- assign v = lk[forloop.index0] -%}{%- assign notekey = cc | append: "Note" -%}
+          <tr>
+            <th scope="row">{{ lex.cultures[cc].name }}</th>
+            <td><span class="verdict v-{{ v }}">{{ lex.verdicts[v].label }}</span></td>
+            <td>{%- assign said = 0 -%}{%- for c in udigits -%}{%- assign dg = lex.digits[c] -%}{%- if dg[cc] != 0 and dg[notekey] -%}{% if said > 0 %} {% endif %}<span>{{ c }}: {{ dg[notekey] }}</span>{%- assign said = said | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- for x in cx -%}{%- assign cb = lex.combos[x] -%}{%- if cb.effect[cc] -%}{% if said > 0 %} {% endif %}<span>{{ x }}: {{ cb.note }}</span>{%- assign said = said | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- if said == 0 -%}No strong associations.{%- endif -%}</td>
+          </tr>
+        {%- endfor %}
+        </tbody>
+      </table>
+      {%- if cx.size > 0 %}
+      <ul class="combos">{% for x in cx %}<li><strong>{{ x }}</strong>: {{ lex.combos[x].note }}</li>{% endfor %}</ul>
+      {%- endif %}
+      <p>In Indian (Vedic) numerology each digit has a ruling planet: {% for c in udigits %}{% if lex.digits[c].planet != "" %}{{ c }} {{ lex.digits[c].planet }}{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %}. The digits total {{ dsum }}, giving the root number {{ root }}{% assign rk = root | append: "" %}{% if lex.digits[rk].planet != "" %} ({{ lex.digits[rk].planet }}){% endif %}.</p>
+      <p><a href="{{ '/tools/lucky-number/' | relative_url }}?n={{ key }}">Check a phone number, plate or house number</a> · <a href="{{ '/culture/' | relative_url }}">How each culture reads numbers</a></p>
+    </section>
+
+    {% include lead-cta.html heading="Want a lucky number for your phone, plate or business?" need="lucky" n=key %}
+
+    <section aria-labelledby="world">
+      <h2 id="world">{{ nfmt }} in the real world</h2>
+      <ul class="world">
+        {%- if n >= 1 and n <= 118 %}{% assign el = facts.elements[n] %}<li><strong>Chemistry:</strong> element {{ n }} is {{ el[1] }} ({{ el[0] }}).</li>{% endif %}
+        {%- if facts.calling[key] %}<li><strong>Phone:</strong> +{{ key }} is the international calling code for {{ facts.calling[key] }}.</li>{% endif %}
+        {%- if facts.emergency[key] %}<li><strong>Emergency:</strong> {{ key }} is the {{ facts.emergency[key] }}.</li>{% endif %}
+        {%- if facts.http[key] %}<li><strong>Web:</strong> HTTP status {{ key }} means "{{ facts.http[key] }}".</li>{% endif %}
+        {%- if len == 3 or len == 4 %}{% assign hh = n | divided_by: 100 | floor %}{% assign mm = n | modulo: 100 %}{% if hh <= 23 and mm <= 59 %}<li><strong>Clock:</strong> read as a time, {{ key }} is {{ hh }}:{% if mm < 10 %}0{% endif %}{{ mm }}.</li>{% endif %}{% endif %}
+        {%- if n >= 1 and n <= 2100 %}<li><strong>Calendar:</strong> see what happened in the <a href="https://en.wikipedia.org/wiki/{% if n < 100 %}AD_{% endif %}{{ key }}" rel="noopener" target="_blank">year {{ key }}</a>.</li>{% endif %}
+        {%- if n >= 60 %}{% assign dd = n | divided_by: 86400 | floor %}{% assign hr = n | modulo: 86400 | divided_by: 3600 | floor %}{% assign mi = n | modulo: 3600 | divided_by: 60 | floor %}{% assign se = n | modulo: 60 %}<li><strong>Time span:</strong> {{ nfmt }} seconds is {% if dd > 0 %}{% include commas.html n=dd %} d {% endif %}{% if hr > 0 %}{{ hr }} h {% endif %}{% if mi > 0 %}{{ mi }} min {% endif %}{% if se > 0 %}{{ se }} s{% endif %}.</li>{% endif %}
+        {%- if n > 0 %}{% assign wk = n | divided_by: 7 | floor %}{% assign wd = n | modulo: 7 %}<li><strong>Days:</strong> {{ nfmt }} days is {% include commas.html n=wk %} week{% if wk != 1 %}s{% endif %}{% if wd > 0 %} and {{ wd }} day{% if wd != 1 %}s{% endif %}{% endif %}.</li>{% endif %}
+      </ul>
+    </section>
+
+    {% include ad.html slot="bottom" %}
+
+    <section class="faq" aria-labelledby="faq">
+      <h2 id="faq">Questions about {{ nfmt }}</h2>
+      <details open><summary>Is {{ key }} a prime number?</summary><p>{{ a_prime }}</p></details>
+      <details><summary>What are the factors of {{ key }}?</summary><p>{{ a_factors }}</p></details>
+      <details><summary>How do you write {{ key }} in words?</summary><p>{{ a_words }}</p></details>
+      <details><summary>What is {{ key }} in Roman numerals?</summary><p>{{ a_roman }}</p></details>
+      <details><summary>What is {{ key }} in binary?</summary><p>{{ a_binary }}</p></details>
+      <details><summary>What does the number {{ key }} mean?</summary><p>{{ a_meaning }}</p></details>
+    </section>
+
+    <aside class="sponsor-line">Own a business that loves {{ nfmt }}? <a href="{{ '/advertise/' | relative_url }}?page=number-{{ key }}">Sponsor this page</a>.</aside>
+
+    {% include share.html %}
+
+    <nav class="pager" aria-label="Nearby numbers">
+      {%- if n > 0 and n <= 1000 %}{% assign pv = n | minus: 1 %}<a rel="prev" href="{{ '/number/' | relative_url }}{{ pv }}/">← {{ pv }}</a>{% else %}<a href="{{ '/explorer/' | relative_url }}?n={% if n > 0 %}{{ n | minus: 1 }}{% else %}0{% endif %}">Previous in the explorer</a>{% endif %}
+      <a href="{{ '/numbers/' | relative_url }}#{{ hubid }}">All numbers</a>
+      {%- if n < 1001 %}{% assign nx = n | plus: 1 %}<a rel="next" href="{{ '/number/' | relative_url }}{{ nx }}/">{{ nx }} →</a>{% else %}<a href="{{ '/explorer/' | relative_url }}?n={{ n | plus: 1 }}">Next in the explorer</a>{% endif %}
+    </nav>
+  </div>
+</article>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.canonical_base }}/"},{"@type":"ListItem","position":2,"name":"Numbers","item":"{{ site.canonical_base }}/numbers/"},{"@type":"ListItem","position":3,"name":{{ nfmt | jsonify }},"item":"{{ site.canonical_base }}{{ page.url }}"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":{{ "Is " | append: key | append: " a prime number?" | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ a_prime | strip_html | jsonify }}}},{"@type":"Question","name":{{ "What are the factors of " | append: key | append: "?" | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ a_factors | strip_html | jsonify }}}},{"@type":"Question","name":{{ "How do you write " | append: key | append: " in words?" | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ a_words | strip_html | jsonify }}}},{"@type":"Question","name":{{ "What is " | append: key | append: " in Roman numerals?" | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ a_roman | strip_html | jsonify }}}},{"@type":"Question","name":{{ "What is " | append: key | append: " in binary?" | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ a_binary | strip_html | jsonify }}}},{"@type":"Question","name":{{ "What does the number " | append: key | append: " mean?" | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ a_meaning | strip_html | jsonify }}}}]}]}</script>

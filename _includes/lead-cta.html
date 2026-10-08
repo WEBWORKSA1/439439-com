@@ -1,0 +1,7 @@
+<aside class="cta-band" aria-label="Get expert help">
+  <div>
+    <h2>{{ include.heading | default: "Want a number that works for you?" }}</h2>
+    <p>{{ include.text | default: "Lucky or VIP mobile numbers, vanity business lines, numerology timing for a launch or wedding, premium numeric domains, or math tutoring. Tell us what you need and get a free, no-obligation plan." }}</p>
+  </div>
+  <a class="btn btn-ink" href="{{ '/services/' | relative_url }}?need={{ include.need | default: 'lucky' }}{% if include.n %}&amp;n={{ include.n }}{% endif %}">{{ include.button | default: "Get my free plan" }}</a>
+</aside>

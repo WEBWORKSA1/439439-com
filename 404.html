@@ -1,0 +1,19 @@
+---
+layout: default
+page_id: notfound
+title: "Page not found"
+permalink: /404.html
+sitemap: false
+---
+<div class="wrap" style="padding:40px 0 20px">
+  <p class="num-big" aria-hidden="true">404</p>
+  <h1>That page is not here</h1>
+  <p class="lede">The link may be old, or the number may not have its own page yet. Every number still works in the explorer.</p>
+  <form class="panel tool" action="{{ '/explorer/' | relative_url }}" method="get" role="search">
+    <div class="tool-row">
+      <div class="field"><label for="nf-n">Look up a number</label><input id="nf-n" name="n" class="big-input" type="text" inputmode="numeric" placeholder="439439"></div>
+      <button class="btn btn-ink" type="submit">Explore</button>
+    </div>
+  </form>
+  <p><a href="{{ '/' | relative_url }}">Go to the home page</a> or <a href="{{ '/numbers/' | relative_url }}">browse numbers 0 to 1,000</a>.</p>
+</div>

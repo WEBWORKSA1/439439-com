@@ -1,0 +1,54 @@
+# 439439.com — Jekyll configuration for GitHub Pages (Deploy from branch: main / root).
+# url and baseurl are set automatically by GitHub Pages; links use relative_url so the
+# site works at webworksa1.github.io/439439-com/ and at 439439.com once the domain is added.
+
+title: "439439"
+tagline: "Every number has a story"
+description: "Free facts, meanings and tools for any number: prime check, factors, number in words, Roman numerals, phone-keypad words, numerology and luck across cultures."
+canonical_base: "https://439439.com"
+lang: en
+timezone: UTC
+
+adsense_client: "ca-pub-6620975821265271"
+contact_url: "https://web.works/contact"
+# Optional: paste your channel URL (e.g. https://www.youtube.com/@yourchannel) to show Subscribe buttons.
+youtube_channel: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+permalink: pretty
+
+collections:
+  numbers:
+    output: true
+    permalink: /number/:name/
+  articles:
+    output: true
+    permalink: /blog/:name/
+
+defaults:
+  - scope: { path: "", type: numbers }
+    values: { layout: number }
+  - scope: { path: "", type: articles }
+    values: { layout: article }
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+feed:
+  collections:
+    articles:
+      path: "/blog/feed.xml"
+
+exclude:
+  - README.md
+  - _build
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json

@@ -1,0 +1,18 @@
+---
+layout: null
+permalink: /manifest.webmanifest
+sitemap: false
+---
+{
+  "name": "439439: every number has a story",
+  "short_name": "439439",
+  "description": "Facts, meanings, luck and tools for any number.",
+  "start_url": "{{ site.baseurl }}/",
+  "scope": "{{ site.baseurl }}/",
+  "display": "standalone",
+  "background_color": "#F3F6F0",
+  "theme_color": "#14231C",
+  "icons": [
+    { "src": "{{ site.baseurl }}/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
