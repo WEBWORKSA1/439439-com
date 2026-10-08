@@ -1,0 +1,42 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if page.collection == "numbers" -%}
+  {%- assign hk = page.slug | append: "" -%}
+  {%- assign hn = hk | plus: 0 -%}
+  {%- if hn > 1000 -%}{%- assign hshard = "x" -%}{%- else -%}{%- assign hshard = hn | divided_by: 100 | floor | append: "" -%}{%- endif -%}
+  {%- assign hd = site.data.n[hshard][hk] -%}
+  {%- capture page_title -%}{{ hk }} meaning, factors, prime check & {{ hk }} in words | 439439{%- endcapture -%}
+  {%- capture page_desc -%}{% if hd[3] == "p" %}{{ hk }} is a prime number.{% elsif hd[3] == "c" %}{{ hk }} is a composite number ({{ hd[5] | strip_html }}).{% else %}{{ hk }} is neither prime nor composite.{% endif %} In words: {{ hd[0] }}. See its factors, binary, Roman numerals, keypad letters, numerology and what it means in China, Japan and beyond.{%- endcapture -%}
+{%- else -%}
+  {%- if page.seo_title -%}{%- assign page_title = page.seo_title -%}
+  {%- elsif page.title -%}{%- capture page_title -%}{{ page.title }} | 439439{%- endcapture -%}
+  {%- else -%}{%- assign page_title = "439439 | Every number has a story" -%}{%- endif -%}
+  {%- assign page_desc = page.description | default: site.description -%}
+{%- endif %}
+<title>{{ page_title | strip | escape }}</title>
+<meta name="description" content="{{ page_desc | strip_html | strip | truncate: 165 | escape }}">
+<link rel="canonical" href="{{ site.canonical_base }}{{ page.url }}">
+<meta name="google-adsense-account" content="{{ site.adsense_client }}">
+<meta name="theme-color" content="#F3F6F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101C16" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="{% if page.collection == 'articles' %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="439439">
+<meta property="og:title" content="{{ page_title | strip | escape }}">
+<meta property="og:description" content="{{ page_desc | strip_html | strip | truncate: 165 | escape }}">
+<meta property="og:url" content="{{ site.canonical_base }}{{ page.url }}">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="manifest" href="{{ '/manifest.webmanifest' | relative_url }}">
+<link rel="alternate" type="application/atom+xml" title="439439 articles" href="{{ '/blog/feed.xml' | relative_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..600&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
+<script>
+  (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+  window.SITE = { base: "{{ site.baseurl }}", adClient: "{{ site.adsense_client }}", youtube: "{{ site.youtube_channel }}" };
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client }}" crossorigin="anonymous"></script>
+{%- if page.url == "/" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"439439","url":"{{ site.canonical_base }}/","potentialAction":{"@type":"SearchAction","target":"{{ site.canonical_base }}/explorer/?n={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"Organization","name":"439439","url":"{{ site.canonical_base }}/","logo":"{{ site.canonical_base }}/favicon.svg"}]}</script>
+{%- endif %}
