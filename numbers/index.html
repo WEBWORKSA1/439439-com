@@ -1,0 +1,62 @@
+---
+layout: default
+page_id: numbers
+title: "Every number from 0 to 1,000, plus notable numbers"
+description: "A page for every number from 0 to 1,000 and for notable numbers such as 1729, 6174, 142857 and 439439: factors, words, Roman numerals, keypad letters, meaning and luck."
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Numbers</span></nav>
+  <h1>Every number from 0 to 1,000</h1>
+  <p class="lede">Each page shows whether the number is prime, its factors, how to write it in words, its binary and Roman forms, the letters it spells on a keypad, its numerology and how five cultures judge its luck. For bigger numbers, use the <a href="{{ '/explorer/' | relative_url }}">explorer</a>.</p>
+  <ul class="jump" aria-label="Jump to a range">
+    {%- for h in (0..9) -%}{%- assign s = h | times: 100 -%}<li><a href="#r{{ s }}">{{ s }}s</a></li>{%- endfor -%}
+    <li><a href="#notable">Notable</a></li>
+    <li><a href="#types">Number types</a></li>
+  </ul>
+
+  {%- for h in (0..9) %}
+  {%- assign start = h | times: 100 -%}{%- assign stop = start | plus: 99 -%}{%- if h == 9 -%}{%- assign stop = 1000 -%}{%- endif %}
+  <section class="range" id="r{{ start }}" aria-labelledby="h-r{{ start }}">
+    <h2 id="h-r{{ start }}">{{ start }} to {% if stop == 1000 %}1,000{% else %}{{ stop }}{% endif %}</h2>
+    <ul class="range-grid">{% for i in (start..stop) %}<li><a href="{{ '/number/' | relative_url }}{{ i }}/">{{ i }}</a></li>{% endfor %}</ul>
+  </section>
+  {%- endfor %}
+
+  <section class="range" id="notable" aria-labelledby="h-notable">
+    <h2 id="h-notable">Notable numbers</h2>
+    <ul class="num-grid">
+      <li><a href="{{ '/number/1001/' | relative_url }}"><b>1001</b><small>7 × 11 × 13</small></a></li>
+      <li><a href="{{ '/number/1111/' | relative_url }}"><b>1111</b><small>Repdigit</small></a></li>
+      <li><a href="{{ '/number/1212/' | relative_url }}"><b>1212</b><small>Angel number</small></a></li>
+      <li><a href="{{ '/number/1234/' | relative_url }}"><b>1234</b><small>Counting run</small></a></li>
+      <li><a href="{{ '/number/1314/' | relative_url }}"><b>1314</b><small>A lifetime</small></a></li>
+      <li><a href="{{ '/number/1440/' | relative_url }}"><b>1440</b><small>Minutes a day</small></a></li>
+      <li><a href="{{ '/number/1729/' | relative_url }}"><b>1729</b><small>Taxicab number</small></a></li>
+      <li><a href="{{ '/number/1947/' | relative_url }}"><b>1947</b><small>Independence</small></a></li>
+      <li><a href="{{ '/number/2026/' | relative_url }}"><b>2026</b><small>This year</small></a></li>
+      <li><a href="{{ '/number/6174/' | relative_url }}"><b>6174</b><small>Kaprekar</small></a></li>
+      <li><a href="{{ '/number/8888/' | relative_url }}"><b>8888</b><small>Quadruple 8</small></a></li>
+      <li><a href="{{ '/number/9999/' | relative_url }}"><b>9999</b><small>Four nines</small></a></li>
+      <li><a href="{{ '/number/10000/' | relative_url }}"><b>10000</b><small>Ten thousand</small></a></li>
+      <li><a href="{{ '/number/12345/' | relative_url }}"><b>12345</b><small>Five in a row</small></a></li>
+      <li><a href="{{ '/number/65536/' | relative_url }}"><b>65536</b><small>2¹⁶</small></a></li>
+      <li><a href="{{ '/number/86400/' | relative_url }}"><b>86400</b><small>Seconds a day</small></a></li>
+      <li><a href="{{ '/number/100000/' | relative_url }}"><b>100000</b><small>One lakh</small></a></li>
+      <li><a href="{{ '/number/123456/' | relative_url }}"><b>123456</b><small>Six in a row</small></a></li>
+      <li><a href="{{ '/number/142857/' | relative_url }}"><b>142857</b><small>Cyclic</small></a></li>
+      <li><a href="{{ '/number/439439/' | relative_url }}"><b>439439</b><small>HEYHEY</small></a></li>
+      <li><a href="{{ '/number/888888/' | relative_url }}"><b>888888</b><small>Six 8s</small></a></li>
+      <li><a href="{{ '/number/1000000/' | relative_url }}"><b>1000000</b><small>Ten lakh</small></a></li>
+      <li><a href="{{ '/number/5201314/' | relative_url }}"><b>5201314</b><small>Love forever</small></a></li>
+    </ul>
+    {%- assign also = "1221,1313,1414,1515,1717,1818,2020,2024,2025,2222,3333,4321,4444,5555,6666,7777,11111,99999,111111,222222,333333,444444,555555,666666,777777,999999" | split: "," -%}
+    <p class="fine">Also: {% for x in also %}<a href="{{ '/number/' | relative_url }}{{ x }}/">{{ x }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}.</p>
+  </section>
+
+  <section class="range" id="types" aria-labelledby="h-types">
+    <h2 id="h-types">Number types used on these pages</h2>
+    <dl class="ledger">
+      {%- for p in site.data.lexicon.props %}<div><dt>{{ p[1].label }}</dt><dd>{{ p[1].desc }}</dd></div>{% endfor -%}
+    </dl>
+  </section>
+</div>
