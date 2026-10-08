@@ -9,7 +9,7 @@ window.CONFIG = {
 
   /* Optional instant-payment links for the Support page. Blank = pledge form only.
      Examples: "https://paypal.me/yourname", a Stripe Payment Link, "https://buymeacoffee.com/yourname",
-     and a UPI ID such as "name@bank". */
+     and your UPI ID (the virtual payment address from your UPI app). */
   pay: { paypal: "", stripe: "", buymeacoffee: "", upi: "" },
 
   /* Monthly contest copy for the Play & win page. */

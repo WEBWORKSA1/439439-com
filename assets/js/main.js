@@ -255,7 +255,7 @@
         '<h2>Want a number that brings you luck?</h2>' +
         '<p>Tell us what you need (a VIP mobile number, a vanity business line or a lucky launch date) and get a free plan.</p>' +
         '<form data-form="slidein-lead" data-subject="Quick lead (slide-in)" novalidate>' +
-        '<label class="sr-only" for="si-email">Email</label><input id="si-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">' +
+        '<label class="sr-only" for="si-email">Email</label><input id="si-email" name="email" type="email" required placeholder="Your email address" autocomplete="email">' +
         '<input type="hidden" name="need" value="quick-plan"><input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
         '<div class="form-actions"><button class="btn btn-ink" type="submit">Send me a free plan</button><a href="' + url('/services/') + '">More options</a></div>' +
         '<p class="form-status" role="status" aria-live="polite"></p></form>';
