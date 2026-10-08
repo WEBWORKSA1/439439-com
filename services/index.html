@@ -1,0 +1,154 @@
+---
+layout: default
+page_id: services
+title: "Get expert help with lucky, VIP and vanity numbers"
+description: "Free, no-obligation plans for VIP mobile numbers, vanity and toll-free lines, fancy number plates, numerology dates, numeric domains and math tutoring. Reply within 1 to 2 business days."
+script: services.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Get expert help</span></nav>
+  <header class="tool-hero">
+    <h1>Make your numbers work for you</h1>
+    <p class="lede">Tell us what you need in three short steps. We reply with a free plan: options, prices and timelines, matched to you. No obligation, no spam.</p>
+    <ul class="trust"><li>Free, no-obligation plan</li><li>Reply within 1 to 2 business days</li><li>Your details are never sold</li><li>Worldwide, in English and Hindi</li></ul>
+  </header>
+
+  <div class="two-col" style="align-items:start">
+    <form class="panel" id="lead-form" data-form="lead" data-manual data-subject="Lead desk request" data-keep novalidate>
+      <ol class="progress" aria-label="Progress">
+        <li class="is-current">What you need</li><li>Details</li><li>Contact</li>
+      </ol>
+
+      <fieldset class="step" data-step="1">
+        <legend class="sr-only">What do you need?</legend>
+        <h2 class="mt-0">What can we help with?</h2>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="need" value="lucky" required><span><b>Lucky or VIP mobile number</b>Digits that match your birth number, culture or brand.</span></label>
+          <label class="choice"><input type="radio" name="need" value="vanity"><span><b>Vanity or toll-free number</b>A business number that spells your name.</span></label>
+          <label class="choice"><input type="radio" name="need" value="numerology"><span><b>Numerology reading or lucky date</b>Launches, weddings, moves and name spellings.</span></label>
+          <label class="choice"><input type="radio" name="need" value="plate"><span><b>Fancy number plate</b>Finding and bidding for a special registration.</span></label>
+          <label class="choice"><input type="radio" name="need" value="domain"><span><b>Premium numeric domain</b>Buy or sell a number domain like this one.</span></label>
+          <label class="choice"><input type="radio" name="need" value="tutoring"><span><b>Math tutoring</b>One-to-one help for school, SAT, IB and competitions.</span></label>
+          <label class="choice"><input type="radio" name="need" value="business"><span><b>Number check for my business</b>Prices, phone numbers, addresses and dates checked against your customers' cultures.</span></label>
+          <label class="choice"><input type="radio" name="need" value="other"><span><b>Something else</b>Tell us in your own words.</span></label>
+        </div>
+        <div class="form-actions"><button class="btn btn-ink" type="button" data-next>Continue</button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="2" hidden>
+        <legend class="sr-only">Details</legend>
+        <h2 class="mt-0">A few details</h2>
+        <div class="form-grid" data-need-fields="lucky">
+          <div class="field"><label for="lf-country">Country for the number</label><input id="lf-country" name="number_country" type="text" placeholder="India" required></div>
+          <div class="field"><label for="lf-carrier">Mobile network (if any)</label><input id="lf-carrier" name="carrier" type="text" placeholder="Any"></div>
+          <div class="field"><label for="lf-want">Digits you would love</label><input id="lf-want" name="preferred_digits" type="text" placeholder="8, 9, 168, ending 786"></div>
+          <div class="field"><label for="lf-avoid">Digits to avoid</label><input id="lf-avoid" name="avoid_digits" type="text" placeholder="4, 13"></div>
+          <div class="field"><label for="lf-dob">Date of birth (for numerology match)</label><input id="lf-dob" name="date_of_birth" type="date"></div>
+          <div class="field"><label for="lf-current">Current number (optional)</label><input id="lf-current" name="current_number" type="text" inputmode="tel"></div>
+        </div>
+        <div class="form-grid" data-need-fields="vanity" hidden>
+          <div class="field"><label for="vf-word">Word or brand to spell</label><input id="vf-word" name="vanity_word" type="text" placeholder="FLOWERS" required></div>
+          <div class="field"><label for="vf-country">Country</label><select id="vf-country" name="vanity_country"><option>United States</option><option>Canada</option><option>United Kingdom</option><option>India</option><option>Australia</option><option>Other</option></select></div>
+          <div class="field"><label for="vf-type">Type of number</label><select id="vf-type" name="vanity_type"><option>Toll-free</option><option>Local</option><option>Either</option></select></div>
+          <div class="field"><label for="vf-use">Where you will use it</label><input id="vf-use" name="vanity_use" type="text" placeholder="Radio ads, vans, website"></div>
+        </div>
+        <div class="form-grid" data-need-fields="numerology" hidden>
+          <div class="field"><label for="nf-name">Full name at birth</label><input id="nf-name" name="birth_name" type="text" required></div>
+          <div class="field"><label for="nf-dob">Date of birth</label><input id="nf-dob" name="birth_date" type="date" required></div>
+          <div class="field"><label for="nf-purpose">Purpose</label><select id="nf-purpose" name="purpose"><option>Personal reading</option><option>Business launch date</option><option>Wedding date</option><option>House move date</option><option>Name or brand spelling</option><option>Baby name</option></select></div>
+          <div class="field"><label for="nf-window">Date window, if choosing a date</label><input id="nf-window" name="date_window" type="text" placeholder="March to May 2027"></div>
+        </div>
+        <div class="form-grid" data-need-fields="plate" hidden>
+          <div class="field"><label for="pf-where">Country and state or emirate</label><input id="pf-where" name="plate_region" type="text" placeholder="Haryana, India" required></div>
+          <div class="field"><label for="pf-veh">Vehicle type</label><select id="pf-veh" name="vehicle"><option>Car</option><option>Motorcycle</option><option>Commercial</option></select></div>
+          <div class="field"><label for="pf-want">Number or pattern wanted</label><input id="pf-want" name="plate_pattern" type="text" placeholder="0786, 9999, 8888"></div>
+        </div>
+        <div class="form-grid" data-need-fields="domain" hidden>
+          <div class="field"><label for="df-dir">Buy or sell?</label><select id="df-dir" name="domain_direction"><option>Buy a numeric domain</option><option>Sell my domain</option><option>Value my domain</option></select></div>
+          <div class="field"><label for="df-name">Domain or pattern</label><input id="df-name" name="domain" type="text" placeholder="888888.com or any 6-digit .com" required></div>
+        </div>
+        <div class="form-grid" data-need-fields="tutoring" hidden>
+          <div class="field"><label for="tf-level">Level</label><select id="tf-level" name="level"><option>Middle school</option><option>High school</option><option>College</option><option>SAT or ACT</option><option>IB or AP</option><option>Competition math</option><option>Adult learner</option></select></div>
+          <div class="field"><label for="tf-topic">Topics</label><input id="tf-topic" name="topics" type="text" placeholder="Calculus, algebra, number theory" required></div>
+          <div class="field"><label for="tf-freq">Sessions per week</label><select id="tf-freq" name="sessions"><option>1</option><option>2</option><option>3 or more</option><option>Exam cram</option></select></div>
+          <div class="field"><label for="tf-tz">Time zone</label><input id="tf-tz" name="timezone" type="text" placeholder="EST, IST, GMT+4"></div>
+        </div>
+        <div class="form-grid" data-need-fields="business" hidden>
+          <div class="field"><label for="bf-name">Business name</label><input id="bf-name" name="business_name" type="text" required></div>
+          <div class="field"><label for="bf-site">Website</label><input id="bf-site" name="website" type="url" placeholder="https://"></div>
+          <div class="field"><label for="bf-aud">Customers' main cultures</label><input id="bf-aud" name="audience_cultures" type="text" placeholder="Chinese, Indian, Korean"></div>
+          <div class="field"><label for="bf-what">What to check</label><input id="bf-what" name="check_items" type="text" placeholder="Prices, phone number, launch date"></div>
+        </div>
+        <div class="field field-wide" style="margin-top:16px"><label for="g-notes">Anything else we should know?</label><textarea id="g-notes" name="notes" rows="4" placeholder="Budget limits, deadlines, examples you like"></textarea></div>
+        <div class="form-actions"><button class="btn btn-ghost" type="button" data-back>Back</button><button class="btn btn-ink" type="button" data-next>Continue</button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="3" hidden>
+        <legend class="sr-only">Contact details</legend>
+        <h2 class="mt-0">Where should we send your plan?</h2>
+        <div class="form-grid">
+          <div class="field"><label for="c-name">Your name</label><input id="c-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="c-phone">Phone or WhatsApp (optional)</label><input id="c-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="c-country">Your country</label><input id="c-country" name="country" type="text" autocomplete="country-name"></div>
+          <div class="field"><label for="c-budget">Budget</label><select id="c-budget" name="budget"><option>Not sure yet</option><option>Under US$100</option><option>US$100 to 500</option><option>US$500 to 2,000</option><option>US$2,000 to 10,000</option><option>Over US$10,000</option></select></div>
+          <div class="field"><label for="c-when">Timeline</label><select id="c-when" name="timeline"><option>As soon as possible</option><option>Within a month</option><option>In 1 to 3 months</option><option>Just exploring</option></select></div>
+          <div class="field"><label for="c-pref">Best way to reach you</label><select id="c-pref" name="contact_preference"><option>Email</option><option>Phone call</option><option>WhatsApp</option></select></div>
+        </div>
+        <label class="check" style="margin-top:16px"><input type="checkbox" name="consent" value="yes" required> <span>I agree that 439439.com may contact me about this request and, where needed, share it with one vetted partner who can fulfil it. See the <a href="{{ '/privacy/' | relative_url }}">privacy policy</a>.</span></label>
+        <input type="hidden" name="ref_number" value="">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-actions"><button class="btn btn-ghost" type="button" data-back>Back</button><button class="btn btn-gold" type="submit">Send my request</button></div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </fieldset>
+
+      <div class="step" data-step="done" hidden>
+        <h2 class="mt-0">Request received</h2>
+        <p>Thank you. Here is what happens next:</p>
+        <ol class="steps-list">
+          <li>We review your request within 1 to 2 business days.</li>
+          <li>You get a plan by email with options, prices and timelines.</li>
+          <li>You decide. There is no obligation and no charge for the plan.</li>
+        </ol>
+        <p>While you wait, <a href="{{ '/tools/lucky-number/' | relative_url }}">check other numbers</a> or <a href="{{ '/blog/' | relative_url }}">read our guides</a>.</p>
+      </div>
+    </form>
+
+    <div>
+      <h2 class="mt-0">How it works</h2>
+      <ol class="steps-list">
+        <li><strong>Tell us the goal.</strong> A number you want, a number to avoid, or a date to choose.</li>
+        <li><strong>We do the legwork.</strong> We search inventories, check culture and numerology, and compare prices.</li>
+        <li><strong>You get a clear plan.</strong> A shortlist with costs and next steps. Buy only if you like it.</li>
+      </ol>
+      <h2>What people ask us for</h2>
+      <ul>
+        <li>A mobile number full of 8s and 9s, with no 4, for a business in Hong Kong or Singapore</li>
+        <li>A toll-free number that spells a brand name for a radio campaign</li>
+        <li>A wedding date whose numerology suits both partners</li>
+        <li>A VIP car registration such as 0001 or 9999</li>
+        <li>A six-digit .com domain with a repeating pattern</li>
+      </ul>
+      <div class="faq">
+        <h2>Questions</h2>
+        <details><summary>Is the plan really free?</summary><p>Yes. You pay only if you decide to buy a number, a domain, a reading or tutoring sessions, and you see the price before you agree.</p></details>
+        <details><summary>Who does the work?</summary><p>Our team and a small network of vetted partners: number dealers, telecom resellers, numerologists and tutors. We introduce you only with your consent.</p></details>
+        <details><summary>Which countries do you cover?</summary><p>Phone numbers and plates depend on local rules. We regularly handle India, the United States, Canada, the UK, the UAE, Singapore and Hong Kong, and will tell you honestly if we cannot help elsewhere.</p></details>
+        <details><summary>Can you guarantee luck?</summary><p>No one can. We guarantee a number that matches the rules and preferences you choose, explained clearly.</p></details>
+      </div>
+      <h2>Are you a provider?</h2>
+      <p>Number dealers, telecom resellers, numerologists, astrologers and tutors can join our partner network.</p>
+      <form class="panel" data-form="partner" data-subject="Partner application" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="pa-name">Name or company</label><input id="pa-name" name="name" type="text" required></div>
+          <div class="field"><label for="pa-email">Email</label><input id="pa-email" name="email" type="email" required></div>
+          <div class="field"><label for="pa-kind">You provide</label><select id="pa-kind" name="provider_type"><option>VIP or fancy mobile numbers</option><option>Vanity or toll-free numbers</option><option>Number plates</option><option>Numerology or astrology</option><option>Tutoring</option><option>Domains</option></select></div>
+          <div class="field"><label for="pa-site">Website or profile</label><input id="pa-site" name="website" type="url" placeholder="https://"></div>
+        </div>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-actions"><button class="btn btn-ink" type="submit">Apply as a partner</button></div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</div>

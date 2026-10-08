@@ -1,0 +1,74 @@
+---
+layout: default
+page_id: culture
+title: "Lucky and unlucky numbers around the world"
+description: "Why 4 is avoided in China, Japan and Korea, why 8 means prosperity, why Thailand loves 9, why Italy fears 17 and Afghanistan avoids 39: a sourced guide to number beliefs."
+---
+{%- assign lex = site.data.lexicon -%}
+<article class="article">
+  <header class="article-head wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Culture</span></nav>
+    <h1>Lucky and unlucky numbers around the world</h1>
+    <p class="lede">Most number beliefs come from sound: a digit that sounds like "death" or "prosper" picks up that meaning. Others come from scripture, history or arithmetic. Here is how the main traditions read the digits, and the combinations people pay for or refuse.</p>
+  </header>
+  <div class="wrap article-grid">
+    <nav class="toc" data-toc aria-label="On this page"></nav>
+    <div class="prose" data-prose>
+      <h2 id="digits">The ten digits at a glance</h2>
+      <p>Verdicts below are the defaults our <a href="{{ '/tools/lucky-number/' | relative_url }}">lucky number checker</a> uses. Real attitudes vary by family, region and generation.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col">Digit</th>{% for c in lex.cultures %}<th scope="col">{{ c[1].name }}</th>{% endfor %}<th scope="col">India: planet</th></tr></thead>
+          <tbody>
+          {%- for i in (0..9) -%}
+            {%- assign k = i | append: "" -%}{%- assign dg = lex.digits[k] -%}
+            <tr><th scope="row"><a href="{{ '/number/' | relative_url }}{{ k }}/">{{ k }}</a></th>
+            {%- for c in lex.cultures -%}{%- assign cc = c[0] -%}{%- assign sc = dg[cc] -%}
+              <td>{% if sc > 0 %}<span class="verdict v-f">Lucky</span>{% elsif sc < 0 %}<span class="verdict v-a">Avoided</span>{% else %}<span class="verdict v-n">Neutral</span>{% endif %}</td>
+            {%- endfor -%}
+            <td>{% if dg.planet != "" %}{{ dg.planet }}{% else %}None{% endif %}</td></tr>
+          {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="china">China: sound is everything</h2>
+      <p>In Chinese, numbers are judged by what they sound like. <strong>8</strong> (bā) rhymes with fā, "to prosper", which is why the Beijing Olympics opened on 8 August 2008 at 8 pm. <strong>6</strong> suggests things going smoothly, and <strong>9</strong> (jiǔ) sounds like "long-lasting". <strong>4</strong> (sì) sounds like "death" (sǐ) and is widely avoided in phone numbers, floors and prices (<a href="https://en.wikipedia.org/wiki/Numbers_in_Chinese_culture" rel="noopener" target="_blank">Numbers in Chinese culture</a>).</p>
+      <p>Combinations matter as much as digits. 168 reads as "prosper all the way", 518 as "I will prosper", 520 as "I love you" and 1314 as "a whole lifetime". On the other side, 14 can sound like "want to die" and 250 is slang for a fool (<a href="https://www.chinahighlights.com/travelguide/culture/lucky-number-8.htm" rel="noopener" target="_blank">China Highlights</a>, <a href="https://www.travelchinaguide.com/intro/social_customs/lucky_number.htm" rel="noopener" target="_blank">Travel China Guide</a>).</p>
+
+      <h2 id="japan">Japan: two readings for every number</h2>
+      <p>Japanese has native and Chinese-derived readings for its numbers, and that choice carries meaning. <strong>4</strong> can be read shi, like "death", and <strong>9</strong> can be read ku, like "suffering", so speakers usually choose yon and kyū (<a href="https://en.wikipedia.org/wiki/Japanese_numerals" rel="noopener" target="_blank">Japanese numerals</a>). <strong>7</strong> recalls the Seven Lucky Gods and <strong>8</strong> widens at the base like a fan, a picture of growing fortune.</p>
+      <p>Number puns, called goroawase, turn digits into words: 39 reads san-kyū, "thank you", and 9 March is informally Thank You Day (<a href="https://en.wikipedia.org/wiki/Japanese_wordplay" rel="noopener" target="_blank">Japanese wordplay</a>).</p>
+
+      <h2 id="korea">Korea and East Asia: the missing fourth floor</h2>
+      <p>In Korean, 4 (sa) shares its sound with death, and lifts often show F instead of 4. Hospitals and funeral halls are especially likely to skip it. Similar habits appear in Hong Kong, Taiwan, Singapore and Malaysia, but not in Vietnam, where the word for four sounds different (<a href="https://en.wikipedia.org/wiki/Tetraphobia" rel="noopener" target="_blank">Tetraphobia</a>).</p>
+
+      <h2 id="thailand">Thailand: 9 means moving forward</h2>
+      <p>Nine, kao, sounds like the Thai word for stepping forward, so it stands for progress and is a popular choice for important dates and numbers (<a href="https://en.thairath.co.th/horoscope/belief/2946737" rel="noopener" target="_blank">Thairath</a>).</p>
+
+      <h2 id="india">India: planets, gifts and sacred numbers</h2>
+      <p>Indian numerology links each digit to a ruling planet: 1 Sun, 2 Moon, 3 Jupiter, 4 Rahu, 5 Mercury, 6 Venus, 7 Ketu, 8 Saturn and 9 Mars (<a href="https://astrologyayurveda.com/blog/astrology-and-numerology/" rel="noopener" target="_blank">Astrology Ayurveda</a>). Families often add one rupee to gifts, giving ₹101, ₹501 or ₹1,001, so the amount does not end in zero (<a href="https://www.sentinelassam.com/more-news/entertainment/7-reasons-why-indians-add-one-rupee-in-money-gifting" rel="noopener" target="_blank">The Sentinel</a>).</p>
+      <p><strong>108</strong> is sacred in Hinduism and Buddhism, the number of beads on a prayer mala (<a href="https://en.wikipedia.org/wiki/108_(number)" rel="noopener" target="_blank">108</a>). Many South Asian Muslims write <strong>786</strong>, the abjad value of the Bismillah, at the head of letters (<a href="https://en.wikipedia.org/wiki/Basmala" rel="noopener" target="_blank">Basmala</a>).</p>
+
+      <h2 id="west">The West: 7, 13 and 666</h2>
+      <p>Seven is widely seen as lucky, while fear of 13 has its own name, triskaidekaphobia, and many buildings skip a 13th floor (<a href="https://en.wikipedia.org/wiki/Triskaidekaphobia" rel="noopener" target="_blank">Triskaidekaphobia</a>). 666 is the "number of the beast" from the Book of Revelation. Italy is the exception that proves the rule: there 17 is the unlucky number, because XVII rearranges into VIXI, "I have lived" (<a href="https://en.wikipedia.org/wiki/Friday_the_13th" rel="noopener" target="_blank">Friday the 13th</a>).</p>
+
+      <h2 id="afghanistan">Afghanistan: the curse of 39</h2>
+      <p>In Afghanistan the number 39 is linked in popular belief to a slang word for a pimp. Since at least 2011, reports have described drivers refusing number plates with 39 and people avoiding phone and house numbers that contain it (<a href="https://www.npr.org/2011/05/21/136496527/forget-unlucky-13-in-afghanistan-beware-39" rel="noopener" target="_blank">NPR</a>, <a href="https://www.aljazeera.com/news/2012/1/3/in-afghanistan-number-39-is-unlucky-for-some" rel="noopener" target="_blank">Al Jazeera</a>). <a href="{{ '/blog/curse-of-39/' | relative_url }}">Read the full story</a>.</p>
+
+      <h2 id="judaism">Judaism: 18 means life</h2>
+      <p>The Hebrew word chai, "life", adds up to 18, so gifts and donations are often given in multiples of 18 (<a href="https://reformjudaism.org/learning/answers-jewish-questions/why-do-jews-give-gifts-and-charitable-donations-multiples-18" rel="noopener" target="_blank">Reform Judaism</a>).</p>
+
+      <h2 id="combos">Combinations people seek or avoid</h2>
+      <ul>
+        {%- for c in lex.combos %}<li><strong><a href="{{ '/number/' | relative_url }}{{ c[0] }}/">{{ c[0] }}</a></strong>: {{ c[1].note }}</li>{% endfor -%}
+      </ul>
+
+      <h2 id="use">Using this when you choose a number</h2>
+      <p>If your customers, family or partners come from a particular culture, check your phone number, address, prices and launch dates against that culture's beliefs. Our <a href="{{ '/tools/lucky-number/' | relative_url }}">lucky number checker</a> does it in seconds, and our <a href="{{ '/services/' | relative_url }}?need=lucky">number desk</a> can help you find a better one.</p>
+      <p class="fine">These are cultural beliefs shared for interest. They are not predictions, and attitudes differ from person to person.</p>
+      {% include share.html %}
+    </div>
+  </div>
+  <div class="wrap">{% include lead-cta.html heading="Choosing a number for a business or a family event?" text="Get a culture-checked shortlist of phone numbers, prices or dates, tailored to the people who matter to you." need="lucky" %}</div>
+</article>
