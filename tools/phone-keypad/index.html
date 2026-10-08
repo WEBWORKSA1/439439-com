@@ -1,0 +1,43 @@
+---
+layout: default
+page_id: tools
+title: "Phone keypad words: what does my number spell?"
+description: "See which words hide in a phone number, or turn a word into keypad digits for a vanity number. Free phoneword finder with 13,000 common English words."
+engine: true
+script: tools.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <a href="{{ '/tools/' | relative_url }}">Tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Phone keypad words</span></nav>
+  <h1>Phone keypad words</h1>
+  <p class="lede">Every key from 2 to 9 carries letters, so every phone number hides possible words. 439439 spells HEYHEY. Find out what yours says, or build a memorable vanity number from a word.</p>
+  <div class="two-col">
+    <form class="panel tool" data-tool="keypad" novalidate>
+      <h2 class="mt-0">Number to words</h2>
+      <div class="field"><label for="k-n">Phone number or digits</label><input id="k-n" class="big-input" type="text" inputmode="tel" autocomplete="off" placeholder="1-800-439-4390"></div>
+      <div class="form-actions"><button class="btn btn-ink" type="submit">Find words</button></div>
+      <div class="result" id="k-out" aria-live="polite"></div>
+    </form>
+    <form class="panel tool" data-tool="keypad-word" novalidate>
+      <h2 class="mt-0">Word to number</h2>
+      <div class="field"><label for="k-w">Word or phrase</label><input id="k-w" class="big-input" type="text" autocomplete="off" placeholder="HEYHEY"></div>
+      <div class="form-actions"><button class="btn btn-ink" type="submit">Get digits</button></div>
+      <div class="result" id="k-wout" aria-live="polite"></div>
+    </form>
+  </div>
+
+  {% include lead-cta.html heading="Want a vanity number that spells your brand?" text="Tell us the word and the country. We check which toll-free or local numbers can spell it and send you options with prices." need="vanity" button="Find my vanity number" %}
+
+  <section class="prose">
+    <h2>How keypad letters work</h2>
+    <p>Phones use a standard layout: 2 ABC, 3 DEF, 4 GHI, 5 JKL, 6 MNO, 7 PQRS, 8 TUV and 9 WXYZ. The keys 1 and 0 carry no letters. Because each key has three or four letters, a seven-digit number has thousands of possible spellings, and only a few are real words.</p>
+    <h2>Why businesses use vanity numbers</h2>
+    <p>A number that spells a word is easier to remember from a billboard, a radio spot or the side of a van. The usual pattern keeps the area or toll-free code and spells the last seven digits. Shorter words can sit inside a number, too: our finder shows every word of three letters or more it can find.</p>
+    <h2>Tips</h2>
+    <ul>
+      <li>Avoid 0 and 1 in the part you want to spell, since they have no letters.</li>
+      <li>Q and Z sit on 7 and 9 on modern phones; very old phones left them off.</li>
+      <li>Say the number out loud: some words are easy to read but hard to dial.</li>
+    </ul>
+  </section>
+  {% include ad.html slot="bottom" %}
+</div>

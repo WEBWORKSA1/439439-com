@@ -1,0 +1,28 @@
+---
+layout: default
+page_id: tools
+title: "Base converter: binary, octal, decimal, hex and base 2 to 36"
+description: "Convert numbers of any size between binary, octal, decimal, hexadecimal and every base from 2 to 36. Free, instant and exact."
+engine: true
+script: tools.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <a href="{{ '/tools/' | relative_url }}">Tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Base converter</span></nav>
+  <h1>Base converter</h1>
+  <p class="lede">Enter a value and the base it is written in. You get it in the common bases and any base you choose, with exact results for very long numbers.</p>
+  <form class="panel tool" data-tool="base" novalidate>
+    <div class="tool-row">
+      <div class="field"><label for="b-v">Value</label><input id="b-v" class="big-input" type="text" autocomplete="off" placeholder="6B48F"></div>
+      <div class="field"><label for="b-from">Written in base</label><select id="b-from"></select></div>
+      <div class="field"><label for="b-to">Also show base</label><select id="b-to"></select></div>
+      <button class="btn btn-ink" type="submit">Convert</button>
+    </div>
+    <div class="result" id="b-out" aria-live="polite"></div>
+  </form>
+  <section class="prose">
+    <h2>How bases work</h2>
+    <p>In base 10 each place is worth ten times the one to its right. In base 2 each place is worth twice as much, so binary 110110111 is 256 + 128 + 32 + 16 + 4 + 2 + 1 = 439. Bases above 10 borrow letters for the extra digits: in hexadecimal, A to F stand for 10 to 15, and base 36 uses every letter of the alphabet.</p>
+    <p>Programmers use binary and hexadecimal because they map neatly onto bits: one hex digit is exactly four bits.</p>
+  </section>
+  {% include ad.html slot="bottom" %}
+</div>

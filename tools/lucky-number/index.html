@@ -1,0 +1,31 @@
+---
+layout: default
+page_id: tools
+title: "Lucky number checker for phone numbers, plates and addresses"
+description: "Is your phone number, car plate or house number lucky? Check it against Chinese, Japanese, Korean, Thai, Indian and Western beliefs, with the reasons behind each verdict."
+engine: true
+script: tools.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <a href="{{ '/tools/' | relative_url }}">Tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Lucky number checker</span></nav>
+  <h1>Lucky number checker</h1>
+  <p class="lede">Enter a phone number, number plate, house number, price or date. We read every digit and combination the way six traditions do, and explain each verdict.</p>
+  <form class="panel tool" data-tool="lucky" novalidate>
+    <div class="tool-row">
+      <div class="field"><label for="l-n">Digits to check</label><input id="l-n" class="big-input" type="text" inputmode="numeric" autocomplete="off" placeholder="98 8888 5168"></div>
+      <div class="field"><label for="l-kind">What is it?</label>
+        <select id="l-kind"><option value="phone">Phone number</option><option value="plate">Number plate</option><option value="house">House or flat number</option><option value="price">Price</option><option value="date">Date (DDMMYYYY)</option><option value="other">Something else</option></select></div>
+      <button class="btn btn-ink" type="submit">Check luck</button>
+    </div>
+    <p class="hint">Letters and spaces are ignored. Leading zeros count.</p>
+    <div class="result" id="l-out" aria-live="polite"></div>
+  </form>
+
+  <section class="prose">
+    <h2>How the checker decides</h2>
+    <p>Each culture scores the digits it cares about: China favours 8, 6 and 9 and avoids 4; Japan avoids 4 and 9 but likes 7 and 8; Korea avoids 4; Thailand favours 9. Then we look for combinations such as 168, 518, 520 and 1314 (lucky in Chinese) or 14 and 250 (unlucky), Western 13 and 666, and 39, which is avoided in Afghanistan. A number with both lucky and unlucky signals is marked mixed.</p>
+    <p>For Indian numerology we add the digits and reduce them to a root number from 1 to 9, each ruled by a planet. Many people in India prefer a mobile number whose root matches their birth number.</p>
+    <p class="fine">These are cultural beliefs, offered for interest. A number cannot change your fortunes, but it can change how customers and family react to it. <a href="{{ '/culture/' | relative_url }}">Read how each culture reads numbers</a>.</p>
+  </section>
+  {% include ad.html slot="bottom" %}
+</div>

@@ -1,0 +1,34 @@
+---
+layout: default
+page_id: tools
+title: "Prime number checker and prime factorization calculator"
+description: "Check whether any number up to a quadrillion is prime, and get its prime factorization, all divisors, Euler's totient and the nearest primes, with a factor tree."
+engine: true
+script: tools.js
+---
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a> <span aria-hidden="true">/</span> <a href="{{ '/tools/' | relative_url }}">Tools</a> <span aria-hidden="true">/</span> <span aria-current="page">Prime factorization</span></nav>
+  <h1>Prime checker and factorizer</h1>
+  <p class="lede">Find out if a number is prime and break it into prime factors. Works for whole numbers up to 1,000,000,000,000,000.</p>
+  <form class="panel tool" data-tool="prime" novalidate>
+    <div class="tool-row">
+      <div class="field"><label for="p-n">Whole number</label><input id="p-n" class="big-input" type="text" inputmode="numeric" autocomplete="off" placeholder="439439"></div>
+      <button class="btn btn-ink" type="submit">Factorize</button>
+    </div>
+    <div class="result" id="p-out" aria-live="polite"></div>
+  </form>
+  <section class="prose">
+    <h2>What makes a number prime</h2>
+    <p>A prime has exactly two divisors: 1 and itself. 2, 3, 5, 7 and 11 are prime; 1 is not, because it has only one divisor. Every whole number above 1 is either prime or a product of primes in exactly one way, which is why the prime factorization is so useful.</p>
+    <h2>How the check works</h2>
+    <p>To test a number n, it is enough to try dividing by primes up to √n. If none divides it, n is prime. This tool skips multiples of 2 and 3 to test about a third of the candidates, which keeps even fifteen-digit numbers fast.</p>
+    <h2>Examples</h2>
+    <ul>
+      <li><a href="{{ '/number/439/' | relative_url }}">439</a> is prime, the 85th.</li>
+      <li><a href="{{ '/number/1001/' | relative_url }}">1001</a> = 7 × 11 × 13.</li>
+      <li><a href="{{ '/number/439439/' | relative_url }}">439439</a> = 7 × 11 × 13 × 439.</li>
+      <li><a href="{{ '/number/1729/' | relative_url }}">1729</a> = 7 × 13 × 19, the Hardy–Ramanujan number.</li>
+    </ul>
+  </section>
+  {% include ad.html slot="bottom" %}
+</div>
